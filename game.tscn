@@ -1,0 +1,50 @@
+[gd_scene load_steps=4 format=3 uid="uid://dhepst38oy8io"]
+
+[ext_resource type="Resource" uid="uid://dlqdmmx1dpyne" path="res://shared_game_data.tres" id="2_e2o6t"]
+[ext_resource type="Script" uid="uid://bflfan2hufwa5" path="res://hud.gd" id="3_feb5d"]
+[ext_resource type="Script" uid="uid://crg2pd70iysj4" path="res://playable_area.gd" id="4_fc0e3"]
+
+[node name="Game" type="Node"]
+
+[node name="Hud" type="Control" parent="."]
+z_index = 4096
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = -456.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("3_feb5d")
+game_state = ExtResource("2_e2o6t")
+
+[node name="HudBackground" type="ColorRect" parent="Hud"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 24.0
+grow_horizontal = 2
+color = Color(0.18359044, 0.18359044, 0.18359044, 1)
+
+[node name="Score" type="Label" parent="Hud"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -20.0
+offset_right = 20.0
+offset_bottom = 23.0
+grow_horizontal = 2
+text = "Score"
+horizontal_alignment = 1
+
+[node name="Wave" type="Label" parent="Hud"]
+layout_mode = 1
+offset_left = 11.0
+offset_right = 40.0
+offset_bottom = 23.0
+text = "Wave"
+
+[node name="PlayableArea" type="Node2D" parent="."]
+script = ExtResource("4_fc0e3")
+game_state = ExtResource("2_e2o6t")

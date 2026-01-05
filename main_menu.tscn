@@ -1,0 +1,51 @@
+[gd_scene load_steps=2 format=3 uid="uid://527h6dhgsvr3"]
+
+[ext_resource type="Script" uid="uid://cyaye7xwfuxl6" path="res://main_menu.gd" id="1_06t4h"]
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 640.0
+offset_bottom = 480.0
+script = ExtResource("1_06t4h")
+
+[node name="Title" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 23.0
+grow_horizontal = 2
+text = "Missile Defense"
+horizontal_alignment = 1
+
+[node name="Play" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.5
+offset_top = -34.0
+offset_right = 20.5
+offset_bottom = -3.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Play"
+
+[node name="High Scores" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -49.5
+offset_top = 16.0
+offset_right = 49.5
+offset_bottom = 47.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "High Scores"
+
+[connection signal="pressed" from="Play" to="." method="_on_play_pressed"]
