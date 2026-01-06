@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://dhepst38oy8io"]
+[gd_scene load_steps=5 format=3 uid="uid://dhepst38oy8io"]
 
 [ext_resource type="Resource" uid="uid://dlqdmmx1dpyne" path="res://shared_game_data.tres" id="2_e2o6t"]
 [ext_resource type="Script" uid="uid://bflfan2hufwa5" path="res://hud.gd" id="3_feb5d"]
+[ext_resource type="PackedScene" uid="uid://be4wgdv5vpmsw" path="res://silo.tscn" id="4_7jktm"]
 [ext_resource type="Script" uid="uid://crg2pd70iysj4" path="res://playable_area.gd" id="4_fc0e3"]
 
 [node name="Game" type="Node"]
@@ -48,3 +49,6 @@ text = "Wave"
 [node name="PlayableArea" type="Node2D" parent="."]
 script = ExtResource("4_fc0e3")
 game_state = ExtResource("2_e2o6t")
+
+[node name="Silo" parent="PlayableArea" instance=ExtResource("4_7jktm")]
+position = Vector2(276, 421)

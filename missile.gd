@@ -5,17 +5,18 @@ extends Node2D
 class_name Missile
 
 
-var inactive_warhead = preload("res://explosion.tscn")
+@export var inactive_warhead: PackedScene = preload("res://explosion.tscn")
+
+## Speed in pixels per second of flight to target
+@export var flight_speed: int = 400
 
 
-@export var flight_time: float = 1.0
-
-
-func launch(target_position: Vector2) -> void:
-	position = target_position
-	
+func launch(silo_position: Vector2, target_position: Vector2) -> void:
 	var active_warhead: Explosion = inactive_warhead.instantiate()
 	add_child(active_warhead)
 	
-	await get_tree().create_timer(flight_time).timeout
+	var time_of_flight: float = silo_position.distance_to(target_position) / flight_speed	
+	await get_tree().create_timer(time_of_flight).timeout
+	
+	position = target_position
 	active_warhead.explode()

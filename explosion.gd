@@ -5,9 +5,10 @@ class_name Explosion
 signal exploded(explosion: Explosion)
 
 
-@export var explosion_speed: float:
+## Time in seconds that the explosion should last for
+@export var explosion_time: float:
 	set(value):
-		$AnimationPlayer.speed_scale = explosion_speed
+		$AnimationPlayer.speed_scale = explosion_time
 	get:
 		return $AnimationPlayer.speed_scale
 
