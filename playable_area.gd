@@ -1,6 +1,9 @@
 extends Node2D
 
 
+var missile_pattern: PackedScene = preload("res://missile.tscn")
+
+
 @export var game_state: GameData
 
 
@@ -11,8 +14,6 @@ func _ready() -> void:
 func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventMouseButton:
 		if event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
-			game_state.score += 1
-			
-			if game_state.score >= 10:
-				game_state.wave += 1
-				game_state.score = 0
+			var missile: Missile = missile_pattern.instantiate()
+			add_child(missile)
+			missile.launch(get_global_mouse_position())

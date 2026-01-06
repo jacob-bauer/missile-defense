@@ -2,6 +2,7 @@
 ##		Missiles need to draw trails behind them.
 
 extends Node2D
+class_name Missile
 
 
 var inactive_warhead = preload("res://explosion.tscn")
