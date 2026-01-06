@@ -83,7 +83,4 @@ libraries = {
 &"": SubResource("AnimationLibrary_j4sxf")
 }
 
-[node name="FlightTimer" type="Timer" parent="."]
-one_shot = true
-
-[connection signal="timeout" from="FlightTimer" to="." method="_on_flight_timer_timeout"]
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

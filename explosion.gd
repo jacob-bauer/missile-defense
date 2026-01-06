@@ -1,12 +1,21 @@
 extends Area2D
+class_name Explosion
 
 
-@export var time_of_flight: float = 0
+signal exploded(explosion: Explosion)
 
 
-func _ready() -> void:
-	$FlightTimer.start(time_of_flight)
+@export var explosion_speed: float:
+	set(value):
+		$AnimationPlayer.speed_scale = explosion_speed
+	get:
+		return $AnimationPlayer.speed_scale
 
 
-func _on_flight_timer_timeout() -> void:
+func explode() -> void:
 	$AnimationPlayer.play("explode")
+
+
+func _on_animation_player_animation_finished(anim_name: StringName) -> void:
+	if anim_name == "explode":
+		exploded.emit(self)
