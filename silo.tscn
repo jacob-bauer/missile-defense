@@ -11,7 +11,7 @@ script = ExtResource("1_hi88l")
 [node name="ColorRect" type="ColorRect" parent="."]
 offset_left = -30.0
 offset_right = 30.0
-offset_bottom = 60.0
+offset_bottom = 35.0
 
 [node name="Label" type="Label" parent="."]
 offset_left = -20.0
