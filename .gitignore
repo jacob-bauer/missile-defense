@@ -15,6 +15,7 @@ export_credentials.cfg
 .mono/
 data_*/
 mono_crash.*.json
+<<<<<<< HEAD
 
 # No secretes
 *.pat
@@ -22,3 +23,5 @@ mono_crash.*.json
 # Only exported art
 *.kra*
 
+=======
+>>>>>>> 15ae22f3ab1d75b5c841219b7190f55809256864
