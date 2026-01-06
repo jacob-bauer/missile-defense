@@ -1,2 +1,9 @@
--> Update the missiles to draw a trail of smoke behind them
--> Create a city that can take damage when a missile hits it
+
+# TODO
+
+## Critical
+- Create a city that can take damage when an enemy missile hits it
+- Launch enemy missiles
+
+## Visual
+- Update the missiles to draw a trail of smoke behind them
