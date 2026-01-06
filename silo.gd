@@ -1,4 +1,5 @@
 extends Node2D
+class_name Silo
 
 
 @export var missile_prototype: PackedScene = preload("res://missile.tscn")
@@ -11,6 +12,10 @@ extends Node2D
 
 
 @onready var playable_area: Node2D = get_parent()
+
+
+func _ready() -> void:
+	missile_quantity = missile_quantity
 
 
 func launch(target_position: Vector2) -> void:
