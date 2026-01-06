@@ -19,3 +19,6 @@ mono_crash.*.json
 # No secretes
 *.pat
 
+# Only exported art
+*.kra*
+
