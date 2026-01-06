@@ -24,4 +24,5 @@ func launch(target_position: Vector2) -> void:
 		
 		var active_missile: Missile = missile_prototype.instantiate()
 		playable_area.add_child(active_missile)
-		active_missile.launch(position, target_position)
+		print($LaunchPosition.position)
+		active_missile.launch($LaunchPosition.position, target_position)

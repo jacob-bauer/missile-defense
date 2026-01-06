@@ -51,10 +51,10 @@ script = ExtResource("4_fc0e3")
 game_state = ExtResource("2_e2o6t")
 
 [node name="Silo" parent="PlayableArea" groups=["silos"] instance=ExtResource("4_7jktm")]
-position = Vector2(56, 448)
+position = Vector2(32, 448)
 
 [node name="Silo2" parent="PlayableArea" groups=["silos"] instance=ExtResource("4_7jktm")]
-position = Vector2(320, 448)
+position = Vector2(288, 448)
 
 [node name="Silo3" parent="PlayableArea" groups=["silos"] instance=ExtResource("4_7jktm")]
-position = Vector2(584, 448)
+position = Vector2(544, 448)
