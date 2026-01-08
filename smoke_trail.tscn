@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://5xij44tpohm5"]
+
+[ext_resource type="Script" uid="uid://be4cwu60yk1ay" path="res://smoke_trail.gd" id="1_pphe7"]
+
+[node name="SmokeTrail" type="Line2D"]
+script = ExtResource("1_pphe7")
