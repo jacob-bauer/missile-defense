@@ -5,7 +5,7 @@ class_name Silo
 signal out_of_ammo(Silo)
 
 
-var target_position: Vector2:
+var enemies_should_target_here: Vector2:
 	set(value):
 		pass
 	get:

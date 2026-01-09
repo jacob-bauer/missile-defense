@@ -34,6 +34,17 @@ var silos: Array[Silo]:
 
 var silos_with_ammo: Array[Silo] = []
 
+var target_positions: Array[Vector2]:
+	set(value):
+		pass
+	
+	get:
+		var silo_target_positions: Array[Vector2] = []
+		for silo in silos:
+			silo_target_positions.append(silo.enemies_should_target_here)
+		
+		return silo_target_positions
+
 
 func _reset_state() -> void:
 	score = 0
