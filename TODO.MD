@@ -10,5 +10,4 @@
 
 ## Notes
 - Enemy missiles are a bit fast
-- Smoke trails are a bit wide
 - Explosions are a bit small
