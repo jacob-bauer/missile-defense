@@ -24,7 +24,7 @@ var enemies_should_target_here: Vector2:
 		return missile_quantity
 
 
-@onready var playable_area: Node2D = get_parent()
+@onready var playable_area: Node = get_parent()
 
 
 func _ready() -> void:
