@@ -1,6 +1,3 @@
-## TODO:
-##		Missiles need to draw trails behind them.
-
 extends Node2D
 class_name Missile
 
