@@ -5,6 +5,13 @@ class_name Silo
 signal out_of_ammo(Silo)
 
 
+var target_position: Vector2:
+	set(value):
+		pass
+	get:
+		return $TargetPosition.position
+
+
 @export var missile_prototype: PackedScene = preload("res://missile.tscn")
 @export var missile_quantity: int = 10:
 	set(value):
