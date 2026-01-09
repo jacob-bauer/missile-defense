@@ -10,4 +10,3 @@
 
 ## Notes
 - Enemy missiles are a bit fast
-- Explosions are a bit small
