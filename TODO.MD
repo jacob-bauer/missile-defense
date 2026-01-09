@@ -15,6 +15,12 @@
 	- When a missile hits a silo, that silo should lose some ammo
 - Enemy missiles in the original game could split into multiple warheads partway through their flight.
 	- I think this requires completely reworking a Missile such that the Explosion type is actually in the scene tree
+		- Even this didn't work correctly. I'm clearly not understanding collisions in Godot and must do some studying.
+		- I put the explosion in the Missile Scene Tree.
+		- I wired it up so that the missile would print to the console whenever it's warhead detected another area entering it.
+			- On startup this would fire a bunch of times for enemy missiles.
+			- When I would fire one missile it would immediately fire as soon as I clicked the mouse
+			- Then it would not fire ever again.
 	- This can be another knob to turn as we increase difficulty over time
 - We need to introduce a new smart bomb type, which avoids friendly missiles on it's way to the target
 - We need to introduce a bomber type, which is destructible itself, but also launches missiles as it travels horizontally through the screen.
