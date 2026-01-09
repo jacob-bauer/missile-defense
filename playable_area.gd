@@ -12,6 +12,7 @@ func _ready() -> void:
 	var silo_nodes: Array[Node] = get_tree().get_nodes_in_group("silos") as Array[Node]
 	_silos.assign(silo_nodes)
 
+
 func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventMouseButton:
 		if event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
@@ -33,4 +34,3 @@ func _unhandled_input(event: InputEvent) -> void:
 					closest_silo = silo
 			
 			closest_silo.launch(mouse_position)
-			
