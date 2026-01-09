@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://dhepst38oy8io"]
+[gd_scene load_steps=7 format=3 uid="uid://dhepst38oy8io"]
 
 [ext_resource type="Resource" uid="uid://dlqdmmx1dpyne" path="res://shared_game_data.tres" id="2_e2o6t"]
 [ext_resource type="Script" uid="uid://bflfan2hufwa5" path="res://hud.gd" id="3_feb5d"]
 [ext_resource type="PackedScene" uid="uid://be4wgdv5vpmsw" path="res://silo.tscn" id="4_7jktm"]
 [ext_resource type="Script" uid="uid://crg2pd70iysj4" path="res://playable_area.gd" id="4_fc0e3"]
+[ext_resource type="PackedScene" uid="uid://ci3a6rtlj4m3m" path="res://enemy_launcher.tscn" id="5_7jktm"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_fc0e3"]
 font_size = 24
@@ -78,3 +79,5 @@ position = Vector2(288, 448)
 
 [node name="Silo3" parent="PlayableArea" groups=["silos"] instance=ExtResource("4_7jktm")]
 position = Vector2(544, 448)
+
+[node name="EnemyLauncher" parent="PlayableArea" instance=ExtResource("5_7jktm")]

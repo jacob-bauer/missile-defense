@@ -9,16 +9,16 @@ class_name EnemyLauncher
 
 
 func begin_attack() -> void:
-	start_timer()
+	_start_timer()
 
 
 func _on_launch_countdown_timeout() -> void:
 	var target_position: Vector2 = game_state.target_positions.pick_random()
-	var launch_position: Vector2 = Vector2(randi_range(0, get_viewport().size()), 0)
+	var launch_position: Vector2 = Vector2(randi_range(0, get_tree().get_root().size.x), 0)
 	
 	$Silo.launch(target_position, launch_position)
-	start_timer()
+	_start_timer()
 
 
-func start_timer() -> void:
+func _start_timer() -> void:
 	$LaunchCountdown.start(randf_range(min_seconds_between_launches, max_seconds_between_launches))

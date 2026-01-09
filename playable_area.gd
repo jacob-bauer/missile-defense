@@ -11,6 +11,8 @@ func _ready() -> void:
 	var test: Array[Silo] = []
 	test.assign(silo_nodes)
 	game_state.silos = test
+	
+	$EnemyLauncher.begin_attack()
 
 
 func _unhandled_input(event: InputEvent) -> void:

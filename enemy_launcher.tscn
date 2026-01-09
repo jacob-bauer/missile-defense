@@ -9,6 +9,7 @@ script = ExtResource("1_jxg7d")
 game_state = ExtResource("2_m1jem")
 
 [node name="Silo" parent="." instance=ExtResource("1_lo44k")]
+visible = false
 
 [node name="LaunchCountdown" type="Timer" parent="."]
 one_shot = true
