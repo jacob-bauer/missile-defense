@@ -14,6 +14,7 @@
 	- When a missile hits a city, that city should take damage
 	- When a missile hits a silo, that silo should lose some ammo
 - Enemy missiles in the original game could split into multiple warheads partway through their flight.
+	- I think this requires completely reworking a Missile such that the Explosion type is actually in the scene tree
 	- This can be another knob to turn as we increase difficulty over time
 - We need to introduce a new smart bomb type, which avoids friendly missiles on it's way to the target
 - We need to introduce a bomber type, which is destructible itself, but also launches missiles as it travels horizontally through the screen.
