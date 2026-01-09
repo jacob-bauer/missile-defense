@@ -9,7 +9,7 @@ var enemies_should_target_here: Vector2:
 	set(value):
 		pass
 	get:
-		return $TargetPosition.position
+		return $TargetPosition.global_position
 
 
 @export var missile_prototype: PackedScene = preload("res://missile.tscn")
