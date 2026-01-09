@@ -21,6 +21,7 @@
 			- On startup this would fire a bunch of times for enemy missiles.
 			- When I would fire one missile it would immediately fire as soon as I clicked the mouse
 			- Then it would not fire ever again.
+			- This can be seen in the branch "missiles-do-damage"
 	- This can be another knob to turn as we increase difficulty over time
 - We need to introduce a new smart bomb type, which avoids friendly missiles on it's way to the target
 - We need to introduce a bomber type, which is destructible itself, but also launches missiles as it travels horizontally through the screen.
