@@ -7,6 +7,7 @@ extends Control
 func _ready() -> void:
 	game_state.score_changed.connect(_on_score_changed)
 	game_state.wave_changed.connect(_on_wave_changed)
+	game_state.game_over.connect(_on_game_over)
 
 
 func _on_score_changed(new_score: int) -> void:
@@ -15,3 +16,9 @@ func _on_score_changed(new_score: int) -> void:
 
 func _on_wave_changed(new_wave: int) -> void:
 	$Wave.text = str(new_wave)
+
+
+func _on_game_over(reason: String) -> void:
+	var reason_text = {"reason": reason}
+	var output = "Game Over!\n{reason}"
+	$Notifier.text = output.format(reason_text)
