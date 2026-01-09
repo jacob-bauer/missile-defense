@@ -16,6 +16,7 @@
 - Enemy missiles in the original game could split into multiple warheads partway through their flight.
 	- I think this requires completely reworking a Missile such that the Explosion type is actually in the scene tree
 		- Even this didn't work correctly. I'm clearly not understanding collisions in Godot and must do some studying.
+			- Try starting [at Godots physics docs](https://docs.godotengine.org/en/stable/tutorials/physics/physics_introduction.html)
 		- I put the explosion in the Missile Scene Tree.
 		- I wired it up so that the missile would print to the console whenever it's warhead detected another area entering it.
 			- On startup this would fire a bunch of times for enemy missiles.
