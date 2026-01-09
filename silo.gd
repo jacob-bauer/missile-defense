@@ -2,11 +2,17 @@ extends Node2D
 class_name Silo
 
 
+signal out_of_ammo(Silo)
+
+
 @export var missile_prototype: PackedScene = preload("res://missile.tscn")
 @export var missile_quantity: int = 10:
 	set(value):
 		$Label.text = str(value)
 		missile_quantity = value
+		
+		if missile_quantity == 0:
+			out_of_ammo.emit(self)
 	get:
 		return missile_quantity
 

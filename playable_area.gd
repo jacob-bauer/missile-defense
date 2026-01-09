@@ -8,7 +8,9 @@ func _ready() -> void:
 	game_state._reset_state()
 	
 	var silo_nodes: Array[Node] = get_tree().get_nodes_in_group("silos") as Array[Node]
-	game_state.silos.assign(silo_nodes)
+	var test: Array[Silo] = []
+	test.assign(silo_nodes)
+	game_state.silos = test
 
 
 func _unhandled_input(event: InputEvent) -> void:
