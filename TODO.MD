@@ -9,4 +9,4 @@
 - When the game loads in, there should be a countdown to game start, then the game starts
 
 ## Notes
-- Enemy missiles are a bit fast
+

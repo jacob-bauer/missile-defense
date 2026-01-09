@@ -3,9 +3,14 @@ class_name EnemyLauncher
 
 
 @export var enemy_missile_quantity: int = 10
+@export var enemy_missile_speed: int = 25
 @export var min_seconds_between_launches: float = 0.1
 @export var max_seconds_between_launches: float = 0.5
 @export var game_state: GameData
+
+
+func _ready() -> void:
+	$Silo.missile_speed = enemy_missile_speed
 
 
 func begin_attack() -> void:
