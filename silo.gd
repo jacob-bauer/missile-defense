@@ -31,10 +31,10 @@ func _ready() -> void:
 	missile_quantity = missile_quantity
 
 
-func launch(target_position: Vector2) -> void:
+func launch(target_position: Vector2, launch_position: Vector2 = $LaunchPosition.global_position) -> void:
 	if missile_quantity > 0:
 		missile_quantity -= 1
 		
 		var active_missile: Missile = missile_prototype.instantiate()
 		playable_area.add_child(active_missile)
-		active_missile.launch($LaunchPosition.global_position, target_position)
+		active_missile.launch(launch_position, target_position)
