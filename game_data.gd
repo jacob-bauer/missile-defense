@@ -4,7 +4,7 @@ extends Resource
 
 signal score_changed(new_score: int)
 signal wave_changed(new_wave: int)
-signal out_of_ammo()
+signal game_over(reason: String)
 
 
 var score: int:
@@ -32,7 +32,7 @@ var silos_with_ammo: Array[Silo]:
 				non_empty_silos.append(silo)
 		
 		if non_empty_silos.size() == 0:
-			out_of_ammo.emit()
+			game_over.emit("Out of Ammo")
 		
 		return non_empty_silos
 
@@ -40,3 +40,4 @@ var silos_with_ammo: Array[Silo]:
 func _reset_state() -> void:
 	score = 0
 	wave = 1
+	silos = []
