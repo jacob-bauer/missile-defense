@@ -11,11 +11,14 @@ var _target_position: Vector2
 
 func launch(silo_position: Vector2, target_position: Vector2) -> void:
 	_target_position = target_position
+	$CollisionShape2D.disabled = true
 	
 	var time_of_flight: float = silo_position.distance_to(target_position) / flight_speed
 	$SmokeTrail.launch(silo_position, target_position, time_of_flight)
 
 
 func _on_target_reached() -> void:
-	position = _target_position
-	# Make the missile explode
+	$CollisionShape2D.disabled = false
+	position = _target_position 
+	$AnimationPlayer.play("Explode")
+	
