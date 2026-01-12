@@ -10,6 +10,10 @@
 	- Could be that game_data needs an "attackable" array, which is simply the concatenation of silos and cities
 	- Cities need some concept of health
 - Determine when a missile epxlosion hits something, either enemy missile or city/silo
+	- We need to use collision layers and masks in order to do this well.
+		- However, doing that well requires knowing whether a silo is an enemy or friendly silo
+		- Therefore, we need a way to pass that information along to a silo through it's parent
+			- Which is either an enemy_launcher or a city
 	- When a missile hits an explosion, it too should explode
 	- When a missile hits a city, that city should take damage
 	- When a missile hits a silo, that silo should lose some ammo

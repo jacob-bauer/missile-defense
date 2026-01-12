@@ -7,6 +7,13 @@ signal wave_changed(new_wave: int)
 signal game_over(reason: String)
 
 
+enum Collision_Layers {
+	FRIENDLY_MISSILES = 1,
+	ENEMY_MISSILES = 2,
+	CITY = 4,
+}
+
+
 var score: int:
 	set(value):
 		score = value
