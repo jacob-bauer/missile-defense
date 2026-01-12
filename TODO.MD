@@ -10,6 +10,7 @@
 	- Could be that game_data needs an "attackable" array, which is simply the concatenation of silos and cities
 	- Cities need some concept of health
 - Determine when a missile epxlosion hits something, either enemy missile or city/silo
+	- I have learned that I think that manually drawing the explosion and missile trail using the CanvasItem._draw() function may be better
 	- When a missile hits an explosion, it too should explode
 	- When a missile hits a city, that city should take damage
 	- When a missile hits a silo, that silo should lose some ammo
