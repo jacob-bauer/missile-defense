@@ -6,6 +6,9 @@
 
 [node name="EnemyLauncher" type="Node"]
 script = ExtResource("1_jxg7d")
+enemy_missile_quantity = 5
+min_seconds_between_launches = 0.25
+max_seconds_between_launches = 1.0
 game_state = ExtResource("2_m1jem")
 
 [node name="Silo" parent="." instance=ExtResource("1_lo44k")]

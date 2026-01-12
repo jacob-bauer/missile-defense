@@ -16,8 +16,12 @@ var _current_radius: float:
 ## The radius in pixels of the missile explosion at it's largest
 @export var explosion_radius: int = 20
 ## The number of seconds the explosion takes. It will reach it's peak explosion_radius
-## at [code]explosion_lifetime / 2[/code] seconds.
-@export var explosion_lifetime: float = 3
+## at [code]explosion_transition_time / 2[/code] seconds.
+@export var explosion_transition_time: float = 3
+## The time in seconds that the explosion is at it's maximum radius
+@export var explosion_time_at_max: float = 0.5
+## The color of the explosion circle
+@export var explosion_color: Color
 
 
 func _ready() -> void:
@@ -27,7 +31,7 @@ func _ready() -> void:
 
 
 func _draw() -> void:
-	draw_circle(Vector2.ZERO, _current_radius, Color.WHITE, true, -1, true)
+	draw_circle(Vector2.ZERO, _current_radius, explosion_color, true, -1, true)
 
 
 func launch(silo_position: Vector2, target_position: Vector2) -> void:
@@ -44,8 +48,10 @@ func _on_target_reached() -> void:
 	
 	var explosion_growth = get_tree().create_tween()
 	explosion_growth.set_parallel()
-	explosion_growth.tween_property($CollisionShape2D.shape, "radius", explosion_radius, explosion_lifetime / 2)
-	explosion_growth.tween_property(self, "_current_radius", explosion_radius, explosion_lifetime / 2)
+	explosion_growth.tween_property($CollisionShape2D.shape, "radius", explosion_radius, explosion_transition_time / 2)
+	explosion_growth.tween_property(self, "_current_radius", explosion_radius, explosion_transition_time / 2)
 	explosion_growth.chain()
-	explosion_growth.tween_property($CollisionShape2D.shape, "radius", 0, explosion_lifetime / 2)
-	explosion_growth.tween_property(self, "_current_radius", 0, explosion_lifetime / 2)
+	explosion_growth.tween_interval(explosion_time_at_max)
+	explosion_growth.chain()
+	explosion_growth.tween_property($CollisionShape2D.shape, "radius", 0, explosion_transition_time / 2)
+	explosion_growth.tween_property(self, "_current_radius", 0, explosion_transition_time / 2)
