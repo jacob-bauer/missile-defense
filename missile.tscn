@@ -1,6 +1,18 @@
-[gd_scene load_steps=2 format=3 uid="uid://by5dfykhqpt8r"]
+[gd_scene load_steps=4 format=3 uid="uid://w7kncq52j6iq"]
 
-[ext_resource type="Script" uid="uid://tjnfbq58fnw5" path="res://missile.gd" id="1_cdnlh"]
+[ext_resource type="PackedScene" uid="uid://5xij44tpohm5" path="res://smoke_trail.tscn" id="1_k1heu"]
+[ext_resource type="Script" uid="uid://c5x3rdwpyl1af" path="res://missile.gd" id="1_l652b"]
 
-[node name="Missile" type="Node2D"]
-script = ExtResource("1_cdnlh")
+[sub_resource type="CircleShape2D" id="CircleShape2D_tt2a3"]
+resource_local_to_scene = true
+radius = 0.01
+
+[node name="NewMissile" type="Area2D"]
+script = ExtResource("1_l652b")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_tt2a3")
+
+[node name="SmokeTrail" parent="." instance=ExtResource("1_k1heu")]
+
+[connection signal="target_reached" from="SmokeTrail" to="." method="_on_target_reached"]
