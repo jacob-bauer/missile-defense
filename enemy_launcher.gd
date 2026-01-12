@@ -11,6 +11,9 @@ class_name EnemyLauncher
 
 func _ready() -> void:
 	$Silo.missile_speed = enemy_missile_speed
+	$Silo.friendly = false
+	$Silo.missile_quantity = enemy_missile_quantity
+	$Silo.missile_speed = enemy_missile_speed
 
 
 func begin_attack() -> void:
