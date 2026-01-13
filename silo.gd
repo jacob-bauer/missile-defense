@@ -12,6 +12,7 @@ var enemies_should_target_here: Vector2:
 		return $TargetPosition.global_position
 
 
+@export var friendly: bool
 @export var missile_prototype: PackedScene = preload("res://missile.tscn")
 @export var missile_speed: int = 240
 @export var missile_quantity: int = 10:
