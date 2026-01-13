@@ -93,4 +93,9 @@ func _on_target_reached() -> void:
 
 
 func _on_area_entered(area: Area2D) -> void:
-	print(name + " Hit " + area.name)
+	if not _friendly:
+		print("I need to explode")
+		# We need to stop the missile from moving and explode it in it's current position
+		# We need to stop the tween that's animating the movement
+		# I need to set the position and the collider position to be the current position
+		# I need to call _on_target_reached
