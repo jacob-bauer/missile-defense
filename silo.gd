@@ -30,7 +30,7 @@ var enemies_should_target_here: Vector2:
 
 
 func _ready() -> void:
-	missile_quantity = missile_quantity
+	missile_quantity = missile_quantity # Missile Quantity is not displayed unless it is changed
 
 
 func launch(target_position: Vector2, launch_position: Vector2 = $LaunchPosition.global_position) -> void:
@@ -39,5 +39,15 @@ func launch(target_position: Vector2, launch_position: Vector2 = $LaunchPosition
 		
 		var active_missile: Missile = missile_prototype.instantiate()
 		active_missile.flight_speed = missile_speed
+		set_physics_layers(active_missile)
 		playable_area.add_child(active_missile)
 		active_missile.launch(launch_position, target_position)
+
+
+func set_physics_layers(missile: Missile) -> void:
+	if friendly:
+		missile.collision_layer = GameData.Collision_Layers.FRIENDLY_MISSILES
+		missile.collision_mask = GameData.Collision_Layers.ENEMY_MISSILES
+	else:
+		missile.collision_layer = GameData.Collision_Layers.ENEMY_MISSILES
+		missile.collision_mask = GameData.Collision_Layers.FRIENDLY_MISSILES | GameData.Collision_Layers.ENEMY_MISSILES
