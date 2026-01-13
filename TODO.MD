@@ -2,7 +2,7 @@
 # TODO
 
 ## Immediate Scratch pad
-
+- Merge monolithic-missile into missiles-detect-hits before merging into main
 ## Critical
 - When the game loads in, there should be a countdown to the game start, and thereon on new waves
 	- New waves should have increasing difficulty, in enemy missile quantity, speed of launch, and missile speed

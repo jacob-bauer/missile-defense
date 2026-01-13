@@ -11,6 +11,16 @@ var _current_radius: float:
 	get:
 		return _current_radius
 
+# This gets manipulated by a tween, so it appears that it doesn't get used,
+# but it does.
+@warning_ignore("unused_private_class_variable")
+var _current_position: Vector2:
+	set(value):
+		$Line2D.add_point(value, 1)
+		$CollisionShape2D.position = value
+	get:
+		return $Line2D.points[1]
+
 
 ## Speed in pixels per second of flight to target
 @export var flight_speed: int = 240
@@ -23,10 +33,14 @@ var _current_radius: float:
 @export var explosion_time_at_max: float = 0.5
 ## The color of the explosion circle
 @export var explosion_color: Color
+## The width of the smoke trail in pixels
+@export var smoke_trail_width: float = 1.5
 
 
 func _ready() -> void:
-	$CollisionShape2D.shape.radius = 10
+	$CollisionShape2D.shape.radius = 1
+	$Line2D.antialiased = true
+	$Line2D.width = smoke_trail_width
 
 
 func _draw() -> void:
@@ -34,16 +48,22 @@ func _draw() -> void:
 
 
 func launch(silo_position: Vector2, target_position: Vector2, friendly: bool = true) -> void:
-	# Update this to manually animate the smoke trail as part of the missile. This way, we can move
-	# the collision shape along with the missile as it travels, and therefore, properly detect
-	# hits.
 	_target_position = target_position
 	_friendly = friendly
 	set_initial_physics_layers()
 	
 	var time_of_flight: float = silo_position.distance_to(target_position) / flight_speed
-	$SmokeTrail.launch(silo_position, target_position, time_of_flight)
-
+	#$SmokeTrail.launch(silo_position, target_position, time_of_flight)
+	
+	# Instead of $SmokeTrail.launch(...) we need to manually do this here, using a tween, so that the position of the collision shape can be updated too
+	$Line2D.add_point(silo_position, 0)
+	$Line2D.add_point(silo_position, 1)
+	
+	var line_tween = get_tree().create_tween()
+	line_tween.tween_property(self, "_current_position", target_position, time_of_flight)
+	await line_tween.finished
+	$Line2D.queue_free()
+	_on_target_reached()
 
 func set_initial_physics_layers() -> void:
 	if _friendly:
