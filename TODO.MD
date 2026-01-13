@@ -1,6 +1,8 @@
 
 # TODO
 
+## Immediate Scratch pad
+
 ## Critical
 - When the game loads in, there should be a countdown to the game start, and thereon on new waves
 	- New waves should have increasing difficulty, in enemy missile quantity, speed of launch, and missile speed

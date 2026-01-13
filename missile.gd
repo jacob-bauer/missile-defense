@@ -2,6 +2,7 @@ extends Area2D
 class_name Missile
 
 
+var _friendly: bool
 var _target_position: Vector2
 var _current_radius: float:
 	set(value):
@@ -32,14 +33,25 @@ func _draw() -> void:
 	draw_circle(Vector2.ZERO, _current_radius, explosion_color, true, -1, true)
 
 
-func launch(silo_position: Vector2, target_position: Vector2) -> void:
+func launch(silo_position: Vector2, target_position: Vector2, friendly: bool = true) -> void:
 	# Update this to manually animate the smoke trail as part of the missile. This way, we can move
 	# the collision shape along with the missile as it travels, and therefore, properly detect
 	# hits.
 	_target_position = target_position
+	_friendly = friendly
+	set_initial_physics_layers()
 	
 	var time_of_flight: float = silo_position.distance_to(target_position) / flight_speed
 	$SmokeTrail.launch(silo_position, target_position, time_of_flight)
+
+
+func set_initial_physics_layers() -> void:
+	if _friendly:
+		collision_layer = GameData.Collision_Layers.FRIENDLY_MISSILES
+		collision_mask = GameData.Collision_Layers.ENEMY_MISSILES
+	else:
+		collision_layer = GameData.Collision_Layers.ENEMY_MISSILES
+		collision_mask = GameData.Collision_Layers.FRIENDLY_MISSILES | GameData.Collision_Layers.CITY
 
 
 func _on_target_reached() -> void:
