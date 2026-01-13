@@ -12,6 +12,8 @@
 - Determine when a missile epxlosion hits something, either enemy missile or city/silo
 	- I'm still having bugs. I think they are do to the position of the area2d node not actually following the trail of the missile until the explosion.
 		- So, how do I solve this?
+		- I think this can be solved by getting rid of SmokeTrail, and just doing it right in missile.gd
+		- This way, I can move the missile right along with the head of the trail.
 	- When an enemy missile hits an explosion, it too should explode
 	- When a missile hits a city, that city should take damage
 	- When a missile hits a silo, that silo should lose some ammo
