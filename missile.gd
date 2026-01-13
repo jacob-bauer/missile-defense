@@ -25,7 +25,6 @@ var _current_radius: float:
 
 
 func _ready() -> void:
-	#$CollisionShape2D.disabled = true
 	$CollisionShape2D.shape.radius = 10
 
 
@@ -34,8 +33,10 @@ func _draw() -> void:
 
 
 func launch(silo_position: Vector2, target_position: Vector2) -> void:
+	# Update this to manually animate the smoke trail as part of the missile. This way, we can move
+	# the collision shape along with the missile as it travels, and therefore, properly detect
+	# hits.
 	_target_position = target_position
-	$CollisionShape2D.disabled = false
 	
 	var time_of_flight: float = silo_position.distance_to(target_position) / flight_speed
 	$SmokeTrail.launch(silo_position, target_position, time_of_flight)
