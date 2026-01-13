@@ -54,6 +54,9 @@ func _on_target_reached() -> void:
 	explosion_growth.chain()
 	explosion_growth.tween_property($CollisionShape2D.shape, "radius", 0, explosion_transition_time / 2)
 	explosion_growth.tween_property(self, "_current_radius", 0, explosion_transition_time / 2)
+	
+	await explosion_growth.finished
+	queue_free()
 
 
 func _on_area_entered(area: Area2D) -> void:
