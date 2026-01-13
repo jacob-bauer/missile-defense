@@ -25,9 +25,8 @@ var _current_radius: float:
 
 
 func _ready() -> void:
-	set_process(false)
-	$CollisionShape2D.disabled = true
-	$CollisionShape2D.shape.radius = 0
+	#$CollisionShape2D.disabled = true
+	$CollisionShape2D.shape.radius = 10
 
 
 func _draw() -> void:
@@ -36,15 +35,15 @@ func _draw() -> void:
 
 func launch(silo_position: Vector2, target_position: Vector2) -> void:
 	_target_position = target_position
-	$CollisionShape2D.disabled = true
+	$CollisionShape2D.disabled = false
 	
 	var time_of_flight: float = silo_position.distance_to(target_position) / flight_speed
 	$SmokeTrail.launch(silo_position, target_position, time_of_flight)
 
 
 func _on_target_reached() -> void:
-	$CollisionShape2D.disabled = false
 	position = _target_position
+	$CollisionShape2D.position = Vector2.ZERO
 	
 	var explosion_growth = get_tree().create_tween()
 	explosion_growth.set_parallel()
@@ -55,3 +54,7 @@ func _on_target_reached() -> void:
 	explosion_growth.chain()
 	explosion_growth.tween_property($CollisionShape2D.shape, "radius", 0, explosion_transition_time / 2)
 	explosion_growth.tween_property(self, "_current_radius", 0, explosion_transition_time / 2)
+
+
+func _on_area_entered(area: Area2D) -> void:
+	print(name + " Hit " + area.name)

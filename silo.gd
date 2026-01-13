@@ -50,4 +50,4 @@ func set_physics_layers(missile: Missile) -> void:
 		missile.collision_mask = GameData.Collision_Layers.ENEMY_MISSILES
 	else:
 		missile.collision_layer = GameData.Collision_Layers.ENEMY_MISSILES
-		missile.collision_mask = GameData.Collision_Layers.FRIENDLY_MISSILES | GameData.Collision_Layers.ENEMY_MISSILES
+		missile.collision_mask = GameData.Collision_Layers.FRIENDLY_MISSILES

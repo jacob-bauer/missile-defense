@@ -16,4 +16,5 @@ shape = SubResource("CircleShape2D_tt2a3")
 
 [node name="SmokeTrail" parent="." instance=ExtResource("1_k1heu")]
 
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
 [connection signal="target_reached" from="SmokeTrail" to="." method="_on_target_reached"]
