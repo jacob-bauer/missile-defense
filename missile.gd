@@ -2,6 +2,7 @@ extends Area2D
 class_name Missile
 
 
+var _exploded: bool = false
 var _line_tween: Tween
 var _friendly: bool
 var _target_position: Vector2
@@ -96,6 +97,7 @@ func _on_target_reached() -> void:
 
 
 func _on_area_entered(area: Area2D) -> void:
-	if not _friendly and area is Missile:
+	if not _friendly and area is Missile and not _exploded:
+		_exploded = true
 		_target_position = $CollisionShape2D.position
 		_on_target_reached()
