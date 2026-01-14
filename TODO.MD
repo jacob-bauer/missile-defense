@@ -3,7 +3,14 @@
 
 ## Immediate Scratch pad
 - Next thing is to build a city
-
+	- A City block should be it's own scene
+		- Because it needs to have it's own hit detection
+		- And animations for damage states
+- While we are at it, go ahead and improve the art for the silo
+	- It should just look prettier
+	- It needs to have animations for ammo quantity
+	- It needs to have animations for taking damage
+- And the city also needs a better background than a grey rectangle
 # Critical
 - There is a bug where, at larger screen sizes, missiles may come in from very low on the side of the screen instead of from the top.
 	- The cause is not immediately apparent
