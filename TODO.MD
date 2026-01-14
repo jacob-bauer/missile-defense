@@ -5,6 +5,8 @@
 - Next thing is to build a city
 
 # Critical
+- There is a bug where, at larger screen sizes, missiles may come in from very low on the side of the screen instead of from the top.
+	- The cause is not immediately apparent
 - Implement a pause menu
 	- Allow to quit
 	- Allow to restart game
