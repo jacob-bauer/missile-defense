@@ -96,6 +96,6 @@ func _on_target_reached() -> void:
 
 
 func _on_area_entered(area: Area2D) -> void:
-	if not _friendly:
+	if not _friendly and area is Missile:
 		_target_position = $CollisionShape2D.position
 		_on_target_reached()

@@ -2,7 +2,7 @@
 # TODO
 
 ## Immediate Scratch pad
-- Merge monolithic-missile into missiles-detect-hits before merging into main
+
 ## Critical
 - When the game loads in, there should be a countdown to the game start, and thereon on new waves
 	- New waves should have increasing difficulty, in enemy missile quantity, speed of launch, and missile speed
@@ -13,7 +13,6 @@
 	- Cities need some concept of health
 - Determine when a missile epxlosion hits something, either enemy missile or city/silo
 	- When a missile hits a city, that city should take damage
-	- When a missile hits a silo, that silo should lose some ammo
 - Enemy missiles in the original game could split into multiple warheads partway through their flight.
 	- This can be another knob to turn as we increase difficulty over time
 - We need to introduce a new smart bomb type, which avoids friendly missiles on it's way to the target

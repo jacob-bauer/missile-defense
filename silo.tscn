@@ -1,11 +1,14 @@
-[gd_scene load_steps=3 format=3 uid="uid://be4wgdv5vpmsw"]
+[gd_scene load_steps=4 format=3 uid="uid://be4wgdv5vpmsw"]
 
 [ext_resource type="Script" uid="uid://cgqybko6bnq6r" path="res://silo.gd" id="1_hi88l"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_hi88l"]
 font_color = Color(0, 0, 0, 1)
 
-[node name="Silo" type="Node2D"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hi88l"]
+size = Vector2(18, 16)
+
+[node name="Silo" type="Area2D"]
 script = ExtResource("1_hi88l")
 friendly = true
 
@@ -26,3 +29,9 @@ position = Vector2(32, 0)
 
 [node name="TargetPosition" type="Marker2D" parent="."]
 position = Vector2(32, 16)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(32, 16)
+shape = SubResource("RectangleShape2D_hi88l")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]

@@ -1,4 +1,4 @@
-extends Node2D
+extends Area2D
 class_name Silo
 
 
@@ -12,6 +12,7 @@ var enemies_should_target_here: Vector2:
 		return $TargetPosition.global_position
 
 
+@export var ammo_lowered_on_hit: int = 3
 @export var friendly: bool
 @export var missile_prototype: PackedScene = preload("res://missile.tscn")
 @export var missile_speed: int = 240
@@ -20,7 +21,7 @@ var enemies_should_target_here: Vector2:
 		$Label.text = str(value)
 		missile_quantity = value
 		
-		if missile_quantity == 0:
+		if missile_quantity <= 0:
 			out_of_ammo.emit(self)
 	get:
 		return missile_quantity
@@ -31,6 +32,10 @@ var enemies_should_target_here: Vector2:
 
 func _ready() -> void:
 	missile_quantity = missile_quantity # Missile Quantity is not displayed unless it is changed
+	if friendly:
+		collision_layer = GameData.Collision_Layers.CITY
+		collision_mask = GameData.Collision_Layers.ENEMY_MISSILES
+		
 
 
 func launch(target_position: Vector2, launch_position: Vector2 = $LaunchPosition.global_position) -> void:
@@ -41,3 +46,8 @@ func launch(target_position: Vector2, launch_position: Vector2 = $LaunchPosition
 		active_missile.flight_speed = missile_speed
 		playable_area.add_child(active_missile)
 		active_missile.launch(launch_position, target_position, friendly)
+
+
+func _on_area_entered(_area: Area2D) -> void:
+	if friendly:
+		missile_quantity -= ammo_lowered_on_hit
