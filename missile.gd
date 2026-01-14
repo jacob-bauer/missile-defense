@@ -2,6 +2,7 @@ extends Area2D
 class_name Missile
 
 
+var _line_tween: Tween
 var _friendly: bool
 var _target_position: Vector2
 var _current_radius: float:
@@ -53,16 +54,14 @@ func launch(silo_position: Vector2, target_position: Vector2, friendly: bool = t
 	set_initial_physics_layers()
 	
 	var time_of_flight: float = silo_position.distance_to(target_position) / flight_speed
-	#$SmokeTrail.launch(silo_position, target_position, time_of_flight)
-	
-	# Instead of $SmokeTrail.launch(...) we need to manually do this here, using a tween, so that the position of the collision shape can be updated too
+
 	$Line2D.add_point(silo_position, 0)
 	$Line2D.add_point(silo_position, 1)
 	
-	var line_tween = get_tree().create_tween()
-	line_tween.tween_property(self, "_current_position", target_position, time_of_flight)
-	await line_tween.finished
-	$Line2D.queue_free()
+	_line_tween = get_tree().create_tween()
+	_line_tween.tween_property(self, "_current_position", target_position, time_of_flight)
+	await _line_tween.finished
+
 	_on_target_reached()
 
 func set_initial_physics_layers() -> void:
@@ -75,6 +74,10 @@ func set_initial_physics_layers() -> void:
 
 
 func _on_target_reached() -> void:
+	if _line_tween.is_running():
+		_line_tween.kill()
+	
+	$Line2D.queue_free()
 	position = _target_position
 	$CollisionShape2D.position = Vector2.ZERO
 	
@@ -94,8 +97,5 @@ func _on_target_reached() -> void:
 
 func _on_area_entered(area: Area2D) -> void:
 	if not _friendly:
-		print("I need to explode")
-		# We need to stop the missile from moving and explode it in it's current position
-		# We need to stop the tween that's animating the movement
-		# I need to set the position and the collider position to be the current position
-		# I need to call _on_target_reached
+		_target_position = $CollisionShape2D.position
+		_on_target_reached()
