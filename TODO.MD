@@ -7,6 +7,8 @@
 		- A "Silo" should be a specific subtype of launcher that does things like displaying the number of missiles it has and taking damage
 		- Then, a bomber can be a subtype of a launcher which flies across the screen and takes damage itself
 		- This will also invlove modifying "EnemyLauncher" scene so that it uses the new launcher type instead of the silo
+		- This seems like a task for composition rather than inheritance.
+			- A silo and a bomber and the enemy base all "have" launchers, instead of "are" launchers
 ## Critical
 - Implement a pause menu
 	- Allow to quit
