@@ -22,4 +22,4 @@ mono_crash.*.json
 
 # Only exported art
 *.kra*
-
+*.aseprite
