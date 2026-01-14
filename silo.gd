@@ -42,10 +42,7 @@ func launch(target_position: Vector2, launch_position: Vector2 = $LaunchPosition
 	if missile_quantity > 0:
 		missile_quantity -= 1
 		
-		var active_missile: Missile = missile_prototype.instantiate()
-		active_missile.flight_speed = missile_speed
-		playable_area.add_child(active_missile)
-		active_missile.launch(launch_position, target_position, friendly)
+		$Launcher.launch(target_position, launch_position, missile_speed, friendly)
 
 
 func _on_area_entered(_area: Area2D) -> void:

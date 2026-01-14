@@ -1,19 +1,12 @@
 extends Node
 class_name EnemyLauncher
-
+# Update to manage own missile quantity
 
 @export var enemy_missile_quantity: int = 10
 @export var enemy_missile_speed: int = 25
 @export var min_seconds_between_launches: float = 0.1
 @export var max_seconds_between_launches: float = 0.5
 @export var game_state: GameData
-
-
-func _ready() -> void:
-	$Silo.missile_speed = enemy_missile_speed
-	$Silo.friendly = false
-	$Silo.missile_quantity = enemy_missile_quantity
-	$Silo.missile_speed = enemy_missile_speed
 
 
 func begin_attack() -> void:
@@ -24,8 +17,10 @@ func _on_launch_countdown_timeout() -> void:
 	var target_position: Vector2 = game_state.target_positions.pick_random()
 	var launch_position: Vector2 = Vector2(randi_range(0, get_tree().get_root().size.x), 0)
 	
-	$Silo.launch(target_position, launch_position)
-	_start_timer()
+	if enemy_missile_quantity > 0:
+		enemy_missile_quantity -= 1
+		$Launcher.launch(target_position, launch_position, enemy_missile_speed, false)
+		_start_timer()
 
 
 func _start_timer() -> void:
