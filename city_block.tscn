@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://cdkmi1d0x6j6x" path="res://city_block.gd" id="1_ih8wv"]
 [ext_resource type="Texture2D" uid="uid://i1jlh42uj5r6" path="res://artwork/city-block.png" id="1_x36e7"]
+[ext_resource type="Resource" uid="uid://dlqdmmx1dpyne" path="res://shared_game_data.tres" id="2_jve3n"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ih8wv"]
 atlas = ExtResource("1_x36e7")
@@ -40,16 +41,23 @@ animations = [{
 "speed": 1.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_p78a4"]
-
 [node name="CityBlock" type="Area2D"]
 script = ExtResource("1_ih8wv")
+game_state = ExtResource("2_jve3n")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_03kkc")
-frame_progress = 0.41438735
+frame = 2
+frame_progress = 0.3514775
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("RectangleShape2D_p78a4")
+[node name="FullHealthPolygon" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(16, -10, 16, 16, 24, 8, 32, 17, 32, 32, -32, 32, -32, 9, -16, 9, -16, -10)
+disabled = true
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="TwoThirdsPolygon" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(16, -10, 16, 32, -32, 32, -32, 9, -16, 9, -16, -10, 16, -10)
+disabled = true
+
+[node name="OneThirdPolygon" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(16, -10, 16, 32, -16, 32, -16, -10)
+disabled = true
