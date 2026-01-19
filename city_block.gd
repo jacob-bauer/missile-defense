@@ -1,4 +1,5 @@
 extends Area2D
+class_name CityBlock
 
 
 signal destroyed
@@ -23,7 +24,7 @@ func _ready() -> void:
 	$TwoThirdsPolygon.disabled = true
 	$OneThirdPolygon.disabled = true
 	
-	$AnimatedSprite2D.frame = _health
+	$AnimatedSprite2D.frame = Health_States.FULL
 	
 	game_state.missile_hit.connect(_on_missile_hit)
 

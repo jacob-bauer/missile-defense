@@ -1,29 +1,37 @@
-[gd_scene load_steps=3 format=3 uid="uid://0jeaxemh6lhb"]
+[gd_scene load_steps=4 format=3 uid="uid://0jeaxemh6lhb"]
 
 [ext_resource type="PackedScene" uid="uid://be4wgdv5vpmsw" path="res://silo.tscn" id="1_m7k8b"]
-[ext_resource type="Texture2D" uid="uid://i1jlh42uj5r6" path="res://artwork/city-block.png" id="2_o3tkm"]
+[ext_resource type="Script" uid="uid://do5i3263saip7" path="res://city.gd" id="1_o3tkm"]
+[ext_resource type="PackedScene" uid="uid://3daa5yh5dggb" path="res://city_block.tscn" id="2_m7k8b"]
 
 [node name="City" type="Node2D"]
-
-[node name="ColorRect" type="ColorRect" parent="."]
-offset_top = 448.0
-offset_right = 640.0
-offset_bottom = 480.0
-color = Color(0.5330367, 0.5330367, 0.5330367, 1)
+script = ExtResource("1_o3tkm")
 
 [node name="Silo" parent="." instance=ExtResource("1_m7k8b")]
-position = Vector2(33, 445)
+position = Vector2(8, 448)
 
 [node name="Silo2" parent="." instance=ExtResource("1_m7k8b")]
-position = Vector2(269, 445)
+position = Vector2(288, 448)
 
 [node name="Silo3" parent="." instance=ExtResource("1_m7k8b")]
-position = Vector2(550, 444)
+position = Vector2(568, 448)
 
-[node name="CityBlock" type="Sprite2D" parent="."]
-position = Vector2(184, 448)
-texture = ExtResource("2_o3tkm")
+[node name="CityBlock" parent="." instance=ExtResource("2_m7k8b")]
+position = Vector2(136, 448)
 
-[node name="CityBlock2" type="Sprite2D" parent="."]
-position = Vector2(448, 448)
-texture = ExtResource("2_o3tkm")
+[node name="CityBlock2" parent="." instance=ExtResource("2_m7k8b")]
+position = Vector2(224, 448)
+
+[node name="CityBlock3" parent="." instance=ExtResource("2_m7k8b")]
+position = Vector2(416, 448)
+
+[node name="CityBlock4" parent="." instance=ExtResource("2_m7k8b")]
+position = Vector2(504, 448)
+
+[connection signal="out_of_ammo" from="Silo" to="." method="_on_silo_out_of_ammo"]
+[connection signal="out_of_ammo" from="Silo2" to="." method="_on_silo_out_of_ammo"]
+[connection signal="out_of_ammo" from="Silo3" to="." method="_on_silo_out_of_ammo"]
+[connection signal="destroyed" from="CityBlock" to="." method="_on_city_block_destroyed"]
+[connection signal="destroyed" from="CityBlock2" to="." method="_on_city_block_destroyed"]
+[connection signal="destroyed" from="CityBlock3" to="." method="_on_city_block_destroyed"]
+[connection signal="destroyed" from="CityBlock4" to="." method="_on_city_block_destroyed"]

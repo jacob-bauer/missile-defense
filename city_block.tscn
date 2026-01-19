@@ -52,12 +52,9 @@ frame_progress = 0.3514775
 
 [node name="FullHealthPolygon" type="CollisionPolygon2D" parent="."]
 polygon = PackedVector2Array(16, -10, 16, 16, 24, 8, 32, 17, 32, 32, -32, 32, -32, 9, -16, 9, -16, -10)
-disabled = true
 
 [node name="TwoThirdsPolygon" type="CollisionPolygon2D" parent="."]
 polygon = PackedVector2Array(16, -10, 16, 32, -32, 32, -32, 9, -16, 9, -16, -10, 16, -10)
-disabled = true
 
 [node name="OneThirdPolygon" type="CollisionPolygon2D" parent="."]
 polygon = PackedVector2Array(16, -10, 16, 32, -16, 32, -16, -10)
-disabled = true

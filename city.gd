@@ -1,0 +1,49 @@
+extends Node2D
+class_name City
+
+
+signal out_of_ammo
+signal cities_destroyed
+
+
+var _silos_with_ammo = 3
+var _city_blocks = 4
+
+
+func _on_silo_out_of_ammo(_silo: Silo) -> void:
+	_silos_with_ammo -= 1	
+	if _silos_with_ammo == 0:
+		out_of_ammo.emit()
+
+
+func _on_city_block_destroyed() -> void:
+	_city_blocks -= 1
+	if _city_blocks == 0:
+		cities_destroyed.emit()
+
+
+func launch(target_position: Vector2) -> void:
+	var silos_by_distance: Array[Silo] = get_silos_by_distance_to(target_position)
+	
+	for silo in silos_by_distance:
+		if silo.missile_quantity > 0:
+			silo.launch(target_position)
+			break
+
+
+func get_silos_by_distance_to(targ_pos: Vector2) -> Array[Silo]:
+	var silos_by_distance: Array[Silo] = [$Silo]
+	
+	if $Silo2/LaunchPosition.global_position.distance_to(targ_pos) < silos_by_distance[0].global_position.distance_to(targ_pos):
+		silos_by_distance.push_front($Silo2)
+	else:
+		silos_by_distance.append($Silo2)
+	
+	if $Silo3/LaunchPosition.global_position.distance_to(targ_pos) < silos_by_distance[0].global_position.distance_to(targ_pos):
+		silos_by_distance.push_front($Silo3)
+	elif $Silo3/LaunchPosition.global_position.distance_to(targ_pos) > silos_by_distance[1].global_position.distance_to(targ_pos):
+		silos_by_distance.append($Silo3)
+	else:
+		silos_by_distance.insert(1, $Silo3)
+	
+	return silos_by_distance
