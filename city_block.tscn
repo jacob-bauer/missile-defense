@@ -42,13 +42,14 @@ animations = [{
 }]
 
 [node name="CityBlock" type="Area2D"]
+collision_layer = 6
+collision_mask = 2
 script = ExtResource("1_ih8wv")
 game_state = ExtResource("2_jve3n")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_03kkc")
-frame = 2
-frame_progress = 0.3514775
+frame_progress = 0.6295368
 
 [node name="FullHealthPolygon" type="CollisionPolygon2D" parent="."]
 polygon = PackedVector2Array(16, -10, 16, 16, 24, 8, 32, 17, 32, 32, -32, 32, -32, 9, -16, 9, -16, -10)
@@ -58,3 +59,5 @@ polygon = PackedVector2Array(16, -10, 16, 32, -32, 32, -32, 9, -16, 9, -16, -10,
 
 [node name="OneThirdPolygon" type="CollisionPolygon2D" parent="."]
 polygon = PackedVector2Array(16, -10, 16, 32, -16, 32, -16, -10)
+
+[node name="TargetPosition" type="Marker2D" parent="."]

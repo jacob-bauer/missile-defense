@@ -1,11 +1,13 @@
-[gd_scene load_steps=4 format=3 uid="uid://0jeaxemh6lhb"]
+[gd_scene load_steps=5 format=3 uid="uid://0jeaxemh6lhb"]
 
 [ext_resource type="PackedScene" uid="uid://be4wgdv5vpmsw" path="res://silo.tscn" id="1_m7k8b"]
 [ext_resource type="Script" uid="uid://do5i3263saip7" path="res://city.gd" id="1_o3tkm"]
 [ext_resource type="PackedScene" uid="uid://3daa5yh5dggb" path="res://city_block.tscn" id="2_m7k8b"]
+[ext_resource type="Resource" uid="uid://dlqdmmx1dpyne" path="res://shared_game_data.tres" id="2_wglf0"]
 
 [node name="City" type="Node2D"]
 script = ExtResource("1_o3tkm")
+game_state = ExtResource("2_wglf0")
 
 [node name="Silo" parent="." instance=ExtResource("1_m7k8b")]
 position = Vector2(8, 448)

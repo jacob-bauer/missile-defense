@@ -10,6 +10,21 @@ var _silos_with_ammo = 3
 var _city_blocks = 4
 
 
+@export var game_state: GameData = load("res://shared_game_data.tres")
+
+
+func _ready() -> void:
+	game_state.target_positions = [
+		$Silo/TargetPosition.global_position,
+		$Silo2/TargetPosition.global_position,
+		$Silo3/TargetPosition.global_position,
+		$CityBlock/TargetPosition.global_position,
+		$CityBlock2/TargetPosition.global_position,
+		$CityBlock3/TargetPosition.global_position,
+		$CityBlock4/TargetPosition.global_position
+	]
+
+
 func _on_silo_out_of_ammo(_silo: Silo) -> void:
 	_silos_with_ammo -= 1	
 	if _silos_with_ammo == 0:
