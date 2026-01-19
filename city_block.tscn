@@ -1,0 +1,55 @@
+[gd_scene load_steps=9 format=3 uid="uid://3daa5yh5dggb"]
+
+[ext_resource type="Script" uid="uid://cdkmi1d0x6j6x" path="res://city_block.gd" id="1_ih8wv"]
+[ext_resource type="Texture2D" uid="uid://i1jlh42uj5r6" path="res://artwork/city-block.png" id="1_x36e7"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ih8wv"]
+atlas = ExtResource("1_x36e7")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jve3n"]
+atlas = ExtResource("1_x36e7")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ikdn2"]
+atlas = ExtResource("1_x36e7")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_721ut"]
+atlas = ExtResource("1_x36e7")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_03kkc"]
+resource_local_to_scene = true
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ih8wv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jve3n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ikdn2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_721ut")
+}],
+"loop": true,
+"name": &"default",
+"speed": 1.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_p78a4"]
+
+[node name="CityBlock" type="Area2D"]
+script = ExtResource("1_ih8wv")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_03kkc")
+frame_progress = 0.41438735
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_p78a4")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
