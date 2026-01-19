@@ -30,10 +30,8 @@ func _ready() -> void:
 
 
 func _on_missile_hit(obj: Object) -> void:
-	if obj is Missile:
-		var missile = obj as Missile
-		if not missile._friendly:
-			reduce_health()
+	if obj == self:
+		reduce_health()
 
 
 func _decrement_health() -> void:

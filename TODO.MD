@@ -2,7 +2,6 @@
 # TODO
 
 ## Immediate Scratch pad
-- City_blocks are not taking damage
 - Next thing is to build a city
 	- A City block should be it's own scene
 		- Because it needs to have it's own hit detection
