@@ -11,7 +11,9 @@
 	- It needs to have animations for ammo quantity
 	- It needs to have animations for taking damage
 - And the city also needs a better background than a grey rectangle
+
 # Critical
+- Thoroughly define how rounds and games are scored.
 - There is a bug where, at larger screen sizes, missiles may come in from very low on the side of the screen instead of from the top.
 	- The cause is not immediately apparent
 - Implement a pause menu
@@ -37,3 +39,6 @@
 - On a new game, player health and ammunition should be reset
 - Godots pause functionality doesn't stop signals from propogating.
 	- This could be a problem since I pretty much rely entirely on signals for game logic.
+- Things are still coupled to missile even though GameData acts as a middle man for propogating hits.
+	- One possible solution could be to introduce a "weapon" type which more specific types inherit from.
+		- I will do this when I have to.

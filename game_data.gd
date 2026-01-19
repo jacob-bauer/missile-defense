@@ -59,6 +59,7 @@ func _reset_state() -> void:
 	score = 0
 	wave = 1
 	silos = []
+	missile_hit.connect(_on_missile_hit)
 
 
 func _on_out_of_ammo(silo: Silo) -> void:
@@ -69,3 +70,10 @@ func _on_out_of_ammo(silo: Silo) -> void:
 	
 	if silos_with_ammo.size() == 0:
 		game_over.emit("Out of Ammo")
+
+
+func _on_missile_hit(obj: Object) -> void:
+	if obj is Missile:
+		var missile: Missile = obj as Missile
+		if not missile._friendly:
+			score += 1
