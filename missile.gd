@@ -37,6 +37,7 @@ var _current_position: Vector2:
 @export var explosion_color: Color
 ## The width of the smoke trail in pixels
 @export var smoke_trail_width: float = 1.5
+@export var game_state: GameData = load("res://shared_game_data.tres")
 
 
 func _ready() -> void:
@@ -97,7 +98,9 @@ func _on_target_reached() -> void:
 
 
 func _on_area_entered(area: Area2D) -> void:
-	if not _friendly and area is Missile and not _exploded:
+	if not _friendly and not _exploded and area is Missile:
 		_exploded = true
 		_target_position = $CollisionShape2D.position
 		_on_target_reached()
+	
+	game_state.missile_hit.emit(area)

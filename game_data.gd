@@ -5,6 +5,8 @@ extends Resource
 signal score_changed(new_score: int)
 signal wave_changed(new_wave: int)
 signal game_over(reason: String)
+@warning_ignore("unused_signal")
+signal missile_hit(obj: Object)
 
 
 enum Collision_Layers {

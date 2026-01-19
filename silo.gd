@@ -11,7 +11,7 @@ var enemies_should_target_here: Vector2:
 	get:
 		return $TargetPosition.global_position
 
-
+@export var game_state: GameData = load("res://shared_game_data.tres")
 @export var ammo_lowered_on_hit: int = 3
 @export var friendly: bool
 @export var missile_prototype: PackedScene = preload("res://missile.tscn")
@@ -31,6 +31,7 @@ var enemies_should_target_here: Vector2:
 
 
 func _ready() -> void:
+	game_state.missile_hit.connect(_on_missile_hit)
 	missile_quantity = missile_quantity # Missile Quantity is not displayed unless it is changed
 	if friendly:
 		collision_layer = GameData.Collision_Layers.CITY
@@ -45,6 +46,6 @@ func launch(target_position: Vector2, launch_position: Vector2 = $LaunchPosition
 		$Launcher.launch(target_position, launch_position, missile_speed, friendly)
 
 
-func _on_area_entered(_area: Area2D) -> void:
-	if friendly:
+func _on_missile_hit(obj: Object) -> void:
+	if obj == self:
 		missile_quantity -= ammo_lowered_on_hit
