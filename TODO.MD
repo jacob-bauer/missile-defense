@@ -2,8 +2,7 @@
 # TODO
 
 ## Immediate Scratch pad
-- Create collision shapes to associate with the sprite sheet frames for the city block
-	- Then we can swap out our collision shapes as the city block takes damage
+- City_blocks are not taking damage
 - Next thing is to build a city
 	- A City block should be it's own scene
 		- Because it needs to have it's own hit detection
