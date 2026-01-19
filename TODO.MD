@@ -3,10 +3,11 @@
 
 ## Immediate Scratch pad
 - While we are at it, go ahead and improve the art for the silo
-	- It should just look prettier
-	- It needs to have animations for ammo quantity
-	- It needs to have animations for taking damage
-- And the city also needs a better background than a grey rectangle
+	- The Silo art is nearly complete. We just need a few modifications
+	- I am thinking of exporting the radar as it's own spritesheet. This way it can be animated to spin separately
+	- Then I can have one sprite for the background (Missiles, Launcher, Stockpile)
+	- Then I can create a spritesheet which is just the missiles, slowly adding one in at a time, until I have thirty missiles.
+		- This animation should fill in, left to right, bottom to top, so that when we take out, it takes out from top to bottom, right to left.
 
 # Critical
 - Thoroughly define how rounds and games are scored.
