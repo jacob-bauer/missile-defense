@@ -22,3 +22,6 @@ mono_crash.*.json
 # Only exported art
 *.kra*
 *.aseprite
+
+# Allow TODO.MD to be open in nano while using git
+*.swp
