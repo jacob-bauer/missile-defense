@@ -2,11 +2,6 @@
 # TODO
 
 ## Immediate Scratch pad
-- Next thing is to build a city
-	- A City block should be it's own scene
-		- Because it needs to have it's own hit detection
-		- And health
-		- And animation showing health
 - While we are at it, go ahead and improve the art for the silo
 	- It should just look prettier
 	- It needs to have animations for ammo quantity
@@ -26,9 +21,6 @@
 	- New waves should have increasing difficulty, in enemy missile quantity, speed of launch, and missile speed
 	- Introduce spawning of smart bombs
 	- Introduce spawning of bombers
-- Create and place cities that can take damage when an enemy missile hits them.
-	- Could be that game_data needs an "attackable" array, which is simply the concatenation of silos and cities
-	- Cities need some concept of health
 - Defeating or surviving waves should lead into playing new waves
 - Enemy missiles in the original game could split into multiple warheads partway through their flight.
 	- This can be another knob to turn as we increase difficulty over time
@@ -37,9 +29,5 @@
 - Save and track scores
 
 ## Notes
-- On a new game, player health and ammunition should be reset
 - Godots pause functionality doesn't stop signals from propogating.
 	- This could be a problem since I pretty much rely entirely on signals for game logic.
-- Things are still coupled to missile even though GameData acts as a middle man for propogating hits.
-	- One possible solution could be to introduce a "weapon" type which more specific types inherit from.
-		- I will do this when I have to.
