@@ -37,4 +37,4 @@ project/assembly_name="missile-defense"
 
 [rendering]
 
-environment/defaults/default_clear_color=Color(0.15665734, 0.12525225, 0.11678062, 1)
+environment/defaults/default_clear_color=Color(0.5291448, 0.6183928, 0.9907989, 1)

@@ -10,13 +10,13 @@ script = ExtResource("1_o3tkm")
 game_state = ExtResource("2_wglf0")
 
 [node name="Silo" parent="." instance=ExtResource("1_m7k8b")]
-position = Vector2(8, 448)
+position = Vector2(40, 448)
 
 [node name="Silo2" parent="." instance=ExtResource("1_m7k8b")]
-position = Vector2(288, 448)
+position = Vector2(320, 448)
 
 [node name="Silo3" parent="." instance=ExtResource("1_m7k8b")]
-position = Vector2(568, 448)
+position = Vector2(600, 448)
 
 [node name="CityBlock" parent="." instance=ExtResource("2_m7k8b")]
 position = Vector2(136, 448)

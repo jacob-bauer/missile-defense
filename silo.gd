@@ -18,7 +18,7 @@ var enemies_should_target_here: Vector2:
 @export var missile_speed: int = 240
 @export var missile_quantity: int = 10:
 	set(value):
-		$Label.text = str(value)
+		$Stockpile.frame = value
 		missile_quantity = value
 		
 		if missile_quantity <= 0:
@@ -27,16 +27,15 @@ var enemies_should_target_here: Vector2:
 		return missile_quantity
 
 
-@onready var playable_area: Node = get_parent()
-
-
 func _ready() -> void:
 	game_state.missile_hit.connect(_on_missile_hit)
 	missile_quantity = missile_quantity # Missile Quantity is not displayed unless it is changed
 	if friendly:
 		collision_layer = GameData.Collision_Layers.CITY
 		collision_mask = GameData.Collision_Layers.ENEMY_MISSILES
-		
+	
+	$Stockpile.frame = missile_quantity
+	$AnimatedSprite2D.play("rotate_radar")
 
 
 func launch(target_position: Vector2, launch_position: Vector2 = $LaunchPosition.global_position) -> void:

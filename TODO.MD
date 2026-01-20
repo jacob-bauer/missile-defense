@@ -2,6 +2,8 @@
 # TODO
 
 ## Immediate Scratch pad
+- In the Silo._ready() function we should select a random starting frame for the radar rotation, otherwise they are all perfectly matched
+- Animation speed for radar on new silo is 400ms per frame
 - While we are at it, go ahead and improve the art for the silo
 	- The Silo art is nearly complete. We just need a few modifications
 	- I am thinking of exporting the radar as it's own spritesheet. This way it can be animated to spin separately
