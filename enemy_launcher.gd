@@ -15,7 +15,8 @@ func begin_attack() -> void:
 
 func _on_launch_countdown_timeout() -> void:
 	var target_position: Vector2 = game_state.target_positions.pick_random()
-	var launch_position: Vector2 = Vector2(randi_range(0, get_tree().get_root().size.x), 0)
+	$EnemyLaunchPath/EnemyLaunchPosition.progress_ratio = randf()
+	var launch_position: Vector2 = $EnemyLaunchPath/EnemyLaunchPosition.global_position
 	
 	if enemy_missile_quantity > 0:
 		enemy_missile_quantity -= 1

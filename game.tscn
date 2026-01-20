@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://dhepst38oy8io"]
+[gd_scene load_steps=8 format=3 uid="uid://dhepst38oy8io"]
 
 [ext_resource type="Resource" uid="uid://dlqdmmx1dpyne" path="res://shared_game_data.tres" id="2_e2o6t"]
 [ext_resource type="Script" uid="uid://bflfan2hufwa5" path="res://hud.gd" id="3_feb5d"]
@@ -8,6 +8,12 @@
 
 [sub_resource type="LabelSettings" id="LabelSettings_fc0e3"]
 font_size = 24
+
+[sub_resource type="Curve2D" id="Curve2D_7jktm"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 0, -24, 0, 0, 0, 0, 640, -24)
+}
+point_count = 2
 
 [node name="Game" type="Node"]
 
@@ -71,6 +77,12 @@ vertical_alignment = 1
 script = ExtResource("4_fc0e3")
 game_state = ExtResource("2_e2o6t")
 
+[node name="City" parent="PlayableArea" instance=ExtResource("5_ryrav")]
+
 [node name="EnemyLauncher" parent="PlayableArea" instance=ExtResource("5_7jktm")]
 
-[node name="City" parent="PlayableArea" instance=ExtResource("5_ryrav")]
+[node name="EnemyLaunchPath" type="Path2D" parent="PlayableArea/EnemyLauncher"]
+curve = SubResource("Curve2D_7jktm")
+
+[node name="EnemyLaunchPosition" type="PathFollow2D" parent="PlayableArea/EnemyLauncher/EnemyLaunchPath"]
+position = Vector2(0, -24)
