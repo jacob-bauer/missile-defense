@@ -2,7 +2,6 @@
 # TODO
 
 ## Immediate Scratch pad
-- In the Silo._ready() function we should select a random starting frame for the radar rotation, otherwise they are all perfectly matched
 
 # Critical
 - Thoroughly define how rounds and games are scored.
