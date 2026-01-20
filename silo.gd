@@ -35,6 +35,8 @@ func _ready() -> void:
 		collision_mask = GameData.Collision_Layers.ENEMY_MISSILES
 	
 	$Stockpile.frame = missile_quantity
+	
+	$AnimatedSprite2D.frame = randi_range(0, 6)
 	$AnimatedSprite2D.play("rotate_radar")
 
 
