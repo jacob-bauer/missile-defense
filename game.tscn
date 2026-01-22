@@ -1,5 +1,6 @@
-[gd_scene load_steps=8 format=3 uid="uid://dhepst38oy8io"]
+[gd_scene load_steps=9 format=3 uid="uid://dhepst38oy8io"]
 
+[ext_resource type="Script" uid="uid://ci6y6wfhidmlk" path="res://game.gd" id="1_ryrav"]
 [ext_resource type="Resource" uid="uid://dlqdmmx1dpyne" path="res://shared_game_data.tres" id="2_e2o6t"]
 [ext_resource type="Script" uid="uid://bflfan2hufwa5" path="res://hud.gd" id="3_feb5d"]
 [ext_resource type="Script" uid="uid://crg2pd70iysj4" path="res://playable_area.gd" id="4_fc0e3"]
@@ -16,6 +17,8 @@ _data = {
 point_count = 2
 
 [node name="Game" type="Node"]
+process_mode = 3
+script = ExtResource("1_ryrav")
 
 [node name="Hud" type="Control" parent="."]
 z_index = 4096
