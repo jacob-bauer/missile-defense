@@ -1,7 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://dhepst38oy8io"]
+[gd_scene load_steps=10 format=3 uid="uid://dhepst38oy8io"]
 
 [ext_resource type="Script" uid="uid://ci6y6wfhidmlk" path="res://game.gd" id="1_ryrav"]
 [ext_resource type="Resource" uid="uid://dlqdmmx1dpyne" path="res://shared_game_data.tres" id="2_e2o6t"]
+[ext_resource type="Script" uid="uid://bxnlaukft7fb3" path="res://pause_menu.gd" id="2_eow3j"]
 [ext_resource type="Script" uid="uid://bflfan2hufwa5" path="res://hud.gd" id="3_feb5d"]
 [ext_resource type="Script" uid="uid://crg2pd70iysj4" path="res://playable_area.gd" id="4_fc0e3"]
 [ext_resource type="PackedScene" uid="uid://ci3a6rtlj4m3m" path="res://enemy_launcher.tscn" id="5_7jktm"]
@@ -20,7 +21,48 @@ point_count = 2
 process_mode = 3
 script = ExtResource("1_ryrav")
 
+[node name="PauseMenu" type="VBoxContainer" parent="."]
+process_mode = 2
+z_index = 4096
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+script = ExtResource("2_eow3j")
+
+[node name="Label" type="Label" parent="PauseMenu"]
+layout_mode = 2
+text = "Paused"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Play" type="Button" parent="PauseMenu"]
+layout_mode = 2
+text = "Play"
+
+[node name="Menu" type="Button" parent="PauseMenu"]
+layout_mode = 2
+text = "Menu"
+
+[node name="Restart" type="Button" parent="PauseMenu"]
+layout_mode = 2
+text = "Restart"
+
+[node name="Quit" type="Button" parent="PauseMenu"]
+layout_mode = 2
+text = "Desktop"
+
 [node name="Hud" type="Control" parent="."]
+process_mode = 1
 z_index = 4096
 layout_mode = 3
 anchors_preset = 15
@@ -77,6 +119,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="PlayableArea" type="Node2D" parent="."]
+process_mode = 1
 script = ExtResource("4_fc0e3")
 game_state = ExtResource("2_e2o6t")
 
@@ -89,3 +132,8 @@ curve = SubResource("Curve2D_7jktm")
 
 [node name="EnemyLaunchPosition" type="PathFollow2D" parent="PlayableArea/EnemyLauncher/EnemyLaunchPath"]
 position = Vector2(0, -24)
+
+[connection signal="button_down" from="PauseMenu/Play" to="PauseMenu" method="_on_play_button_down"]
+[connection signal="button_down" from="PauseMenu/Menu" to="PauseMenu" method="_on_menu_button_down"]
+[connection signal="button_down" from="PauseMenu/Restart" to="PauseMenu" method="_on_restart_button_down"]
+[connection signal="button_down" from="PauseMenu/Quit" to="PauseMenu" method="_on_quit_button_down"]

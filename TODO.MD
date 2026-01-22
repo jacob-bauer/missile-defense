@@ -4,7 +4,6 @@
 ## Immediate Scratch pad
 - I have a basic framework for pausing the game in game.gd
 	- Now, I just need to figure out a UI.
-		- Unpause
 		- Quit to menu
 		- Quit to desktop
 		- Restart game
