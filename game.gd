@@ -5,17 +5,15 @@ var paused: bool = false
 
 
 func _ready() -> void:
-	$PauseMenu.visible = false
+	toggle_pause(false)
 
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("Pause"):
-		if not paused:
-			get_tree().paused = true
-			$PauseMenu.visible = true
-		
-		else:
-			get_tree().paused = false
-			$PauseMenu.visible = false
-		
-		paused = not paused
+		toggle_pause()
+
+
+func toggle_pause(pause: bool = not paused) -> void:
+	paused = pause
+	$PauseMenu.visible = paused
+	get_tree().paused = paused
