@@ -51,6 +51,9 @@ func _draw() -> void:
 
 
 func launch(silo_position: Vector2, target_position: Vector2, friendly: bool = true) -> void:
+	if friendly:
+		$CollisionShape2D.disabled = true
+	
 	_target_position = target_position
 	_friendly = friendly
 	set_initial_physics_layers()
@@ -82,6 +85,7 @@ func _on_target_reached() -> void:
 	$Line2D.queue_free()
 	position = _target_position
 	$CollisionShape2D.position = Vector2.ZERO
+	$CollisionShape2D.disabled = false
 	
 	var explosion_growth = get_tree().create_tween()
 	explosion_growth.set_parallel()

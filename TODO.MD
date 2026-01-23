@@ -16,8 +16,7 @@
 - We need to introduce a bomber type, which is destructible itself, but also launches missiles as it travels horizontally through the screen.
 - Save and track scores
 	- Should the players score be saved when quitting early? I.e. by pressing the x on the window?
-- Missiles have a bug where it a friendly missile flies over an enemy missile EXACTLY the enemy missile will blow up even if the friendly missile hasn't
-	- This should not be the case
+
 ## Non-Critical
 - Add a counter for remaining enemy missiles to the hud
 - Play with resolutions and scaling a bit
