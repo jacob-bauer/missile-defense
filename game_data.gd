@@ -20,6 +20,9 @@ enum Collision_Layers {
 
 var score: int:
 	set(value):
+		if value < 0:
+			value = 0
+		
 		score = value
 		score_changed.emit(value)
 	get:
@@ -39,6 +42,10 @@ var friendly_ammunition: int
 var enemy_missiles_launched: int
 
 
+var missiles_destroyed: int = 0
+var damage_taken: int = 0
+
+
 func _reset_state() -> void:
 	score = 0
 	wave = 1
@@ -48,8 +55,8 @@ func _reset_state() -> void:
 
 
 func _on_wave_completed() -> void:
-	pass
-	# Calculate final score and move to next wave
+	score += (friendly_ammunition - damage_taken + missiles_destroyed) * wave
+	# Move to the next table
 
 
 func _on_wave_launched(missile_quantity: int) -> void:
@@ -60,4 +67,9 @@ func _on_missile_hit(obj: Object) -> void:
 	if obj is Missile:
 		var missile: Missile = obj as Missile
 		if not missile._friendly:
-			score += 1
+			missiles_destroyed += 1
+	
+	elif obj is Silo:
+		damage_taken += 1
+	elif obj is CityBlock:
+		damage_taken += 1
