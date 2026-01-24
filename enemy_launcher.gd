@@ -19,6 +19,10 @@ var current_ammo: int:
 @export var game_state: GameData
 
 
+func _ready() -> void:
+	current_ammo = starting_missile_quantity
+
+
 func begin_attack() -> void:
 	_start_timer()
 

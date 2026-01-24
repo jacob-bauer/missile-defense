@@ -1,5 +1,6 @@
 
 # TODO
+- Next, enemy_launcher needs to signal gamedata when it is done launching its wave
 
 ## Immediate Scratch pad
 - Scoring is actually quite hard without introducing all kinds of coupling all over the place
