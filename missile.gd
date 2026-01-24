@@ -85,7 +85,7 @@ func _on_target_reached() -> void:
 	$Line2D.queue_free()
 	position = _target_position
 	$CollisionShape2D.position = Vector2.ZERO
-	$CollisionShape2D.disabled = false
+	$CollisionShape2D.set_deferred("disabled", false)
 	
 	var explosion_growth = get_tree().create_tween()
 	explosion_growth.set_parallel()

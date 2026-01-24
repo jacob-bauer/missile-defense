@@ -29,6 +29,7 @@ var enemies_should_target_here: Vector2:
 
 func _ready() -> void:
 	game_state.missile_hit.connect(_on_missile_hit)
+	game_state.friendly_ammunition += missile_quantity
 	missile_quantity = missile_quantity # Missile Quantity is not displayed unless it is changed
 	if friendly:
 		collision_layer = GameData.Collision_Layers.CITY
@@ -42,11 +43,16 @@ func _ready() -> void:
 
 func launch(target_position: Vector2, launch_position: Vector2 = $LaunchPosition.global_position) -> void:
 	if missile_quantity > 0:
-		missile_quantity -= 1
+		_reduce_ammunition(1)
 		
 		$Launcher.launch(target_position, launch_position, missile_speed, friendly)
 
 
 func _on_missile_hit(obj: Object) -> void:
 	if obj == self:
-		missile_quantity -= ammo_lowered_on_hit
+		_reduce_ammunition(ammo_lowered_on_hit)
+
+
+func _reduce_ammunition(reduction: int) -> void:
+	missile_quantity -= reduction
+	game_state.friendly_ammunition -= reduction

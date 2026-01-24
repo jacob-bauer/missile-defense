@@ -33,6 +33,7 @@ var wave: int:
 
 # IMPORTANT
 var target_positions: Array[Vector2]
+var friendly_ammunition: int
 
 
 func _reset_state() -> void:
