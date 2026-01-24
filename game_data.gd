@@ -4,6 +4,7 @@ extends Resource
 
 signal score_changed(new_score: int)
 signal wave_changed(new_wave: int)
+signal wave_launched(missile_quantity: int)
 signal game_over(reason: String)
 @warning_ignore("unused_signal")
 signal missile_hit(obj: Object)
@@ -34,12 +35,18 @@ var wave: int:
 # IMPORTANT
 var target_positions: Array[Vector2]
 var friendly_ammunition: int
+var enemy_missiles_launched: int
 
 
 func _reset_state() -> void:
 	score = 0
 	wave = 1
 	missile_hit.connect(_on_missile_hit)
+	wave_launched.connect(_on_wave_launched)
+
+
+func _on_wave_launched(missile_quantity: int) -> void:
+	enemy_missiles_launched = missile_quantity
 
 
 func _on_missile_hit(obj: Object) -> void:

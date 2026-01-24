@@ -1,8 +1,18 @@
 extends Node
 class_name EnemyLauncher
-# Update to manage own missile quantity
 
-@export var enemy_missile_quantity: int = 10
+
+var current_ammo: int:
+	set(value):
+		if value <= 0:
+			game_state.wave_launched.emit(starting_missile_quantity)
+		
+		current_ammo = value
+	get:
+		return current_ammo
+
+
+@export var starting_missile_quantity: int = 10
 @export var enemy_missile_speed: int = 25
 @export var min_seconds_between_launches: float = 0.1
 @export var max_seconds_between_launches: float = 0.5
@@ -18,8 +28,8 @@ func _on_launch_countdown_timeout() -> void:
 	$EnemyLaunchPath/EnemyLaunchPosition.progress_ratio = randf()
 	var launch_position: Vector2 = $EnemyLaunchPath/EnemyLaunchPosition.global_position
 	
-	if enemy_missile_quantity > 0:
-		enemy_missile_quantity -= 1
+	if current_ammo > 0:
+		current_ammo -= 1
 		$Launcher.launch(target_position, launch_position, enemy_missile_speed, false)
 		_start_timer()
 
