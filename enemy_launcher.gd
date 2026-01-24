@@ -2,14 +2,24 @@ extends Node
 class_name EnemyLauncher
 
 
-var current_ammo: int:
+var _completed_missiles_quantity: int:
 	set(value):
+		_completed_missiles_quantity = value
+		if value == starting_missile_quantity:
+			game_state.wave_completed.emit()
+	
+	get:
+		return _completed_missiles_quantity
+
+
+var _current_ammo: int:
+	set(value):
+		_current_ammo = value
 		if value <= 0:
 			game_state.wave_launched.emit(starting_missile_quantity)
-		
-		current_ammo = value
+
 	get:
-		return current_ammo
+		return _current_ammo
 
 
 @export var starting_missile_quantity: int = 10
@@ -20,7 +30,7 @@ var current_ammo: int:
 
 
 func _ready() -> void:
-	current_ammo = starting_missile_quantity
+	_current_ammo = starting_missile_quantity
 
 
 func begin_attack() -> void:
@@ -32,11 +42,15 @@ func _on_launch_countdown_timeout() -> void:
 	$EnemyLaunchPath/EnemyLaunchPosition.progress_ratio = randf()
 	var launch_position: Vector2 = $EnemyLaunchPath/EnemyLaunchPosition.global_position
 	
-	if current_ammo > 0:
-		current_ammo -= 1
+	if _current_ammo > 0:
+		_current_ammo -= 1
 		$Launcher.launch(target_position, launch_position, enemy_missile_speed, false)
 		_start_timer()
 
 
 func _start_timer() -> void:
 	$LaunchCountdown.start(randf_range(min_seconds_between_launches, max_seconds_between_launches))
+
+
+func _on_launcher_child_exiting_tree(_node: Node) -> void:
+	_completed_missiles_quantity += 1
