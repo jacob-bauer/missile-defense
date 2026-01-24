@@ -38,24 +38,22 @@ func _decrement_health() -> void:
 	match _health:
 		3:
 			$AnimatedSprite2D.frame = Health_States.FULL
-			$FullHealthPolygon.disabled = false
-			$TwoThirdsPolygon.disabled = true
-			$OneThirdPolygon.disabled = true
+			_disable_polygons(false, true, true)
 		2:
 			$AnimatedSprite2D.frame = Health_States.TWO_THIRDS
-			$FullHealthPolygon.disabled = true
-			$TwoThirdsPolygon.disabled = false
-			$OneThirdPolygon.disabled = true
+			_disable_polygons(true, false, true)
 		1:
 			$AnimatedSprite2D.frame = Health_States.ONE_THIRD
-			$FullHealthPolygon.disabled = true
-			$TwoThirdsPolygon.disabled = true
-			$OneThirdPolygon.disabled = false
+			_disable_polygons(true, true, false)
 		0:
 			$AnimatedSprite2D.frame = Health_States.DESTROYED
-			$FullHealthPolygon.disabled = true
-			$FullHealthPolygon.disabled = true
-			$FullHealthPolygon.disabled = true
+			_disable_polygons(true, true, true)
+
+
+func _disable_polygons(full: bool, two_thirds: bool, one_third: bool) -> void:
+	$FullHealthPolygon.set_deferred("disabled", full)
+	$TwoThirdsPolygon.set_deferred("disabled", two_thirds)
+	$OneThirdPolygon.set_deferred("disabled", one_third)
 
 
 func reduce_health() -> void:
