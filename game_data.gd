@@ -6,8 +6,6 @@ signal score_changed(new_score: int)
 signal wave_changed(new_wave: int)
 signal wave_launched(missile_quantity: int)
 signal wave_completed()
-signal game_over(reason: String)
-@warning_ignore("unused_signal")
 signal missile_hit(obj: Object)
 
 
