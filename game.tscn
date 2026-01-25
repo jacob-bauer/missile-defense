@@ -146,7 +146,6 @@ game_state = ExtResource("2_e2o6t")
 [node name="City" parent="PlayableArea" instance=ExtResource("5_ryrav")]
 
 [node name="EnemyLauncher" parent="PlayableArea" instance=ExtResource("5_7jktm")]
-starting_missile_quantity = 5
 
 [node name="EnemyLaunchPath" type="Path2D" parent="PlayableArea/EnemyLauncher"]
 curve = SubResource("Curve2D_7jktm")
