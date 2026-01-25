@@ -103,7 +103,6 @@ func _on_target_reached() -> void:
 
 func _on_area_entered(area: Area2D) -> void:
 	if not _friendly and not _exploded and area is Missile:
-		var missile = area as Missile
 		_exploded = true
 		_target_position = $CollisionShape2D.position
 		_on_target_reached()
