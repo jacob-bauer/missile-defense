@@ -7,6 +7,8 @@ signal wave_changed(new_wave: int)
 signal wave_launched(missile_quantity: int)
 signal wave_completed()
 signal missile_hit(obj: Object)
+@warning_ignore("unused_signal")
+signal begin_wave()
 
 
 enum Collision_Layers {
@@ -54,7 +56,7 @@ func _reset_state() -> void:
 
 func _on_wave_completed() -> void:
 	score += (friendly_ammunition - damage_taken + missiles_destroyed) * wave
-	# Move to the next table
+	wave += 1
 
 
 func _on_wave_launched(missile_quantity: int) -> void:

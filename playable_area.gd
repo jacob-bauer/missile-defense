@@ -6,8 +6,6 @@ extends Node2D
 
 func _ready() -> void:
 	game_state._reset_state()
-	
-	$EnemyLauncher.begin_attack()
 
 
 func _unhandled_input(event: InputEvent) -> void:

@@ -1,9 +1,10 @@
-[gd_scene load_steps=9 format=3 uid="uid://dhepst38oy8io"]
+[gd_scene load_steps=10 format=3 uid="uid://dhepst38oy8io"]
 
 [ext_resource type="Script" uid="uid://ci6y6wfhidmlk" path="res://game.gd" id="1_ryrav"]
 [ext_resource type="Resource" uid="uid://dlqdmmx1dpyne" path="res://shared_game_data.tres" id="2_e2o6t"]
 [ext_resource type="Script" uid="uid://bxnlaukft7fb3" path="res://pause_menu.gd" id="2_eow3j"]
 [ext_resource type="Script" uid="uid://bflfan2hufwa5" path="res://hud.gd" id="3_feb5d"]
+[ext_resource type="Script" uid="uid://cft6qjoijva7k" path="res://wave_transiter.gd" id="3_j5wjh"]
 [ext_resource type="Script" uid="uid://crg2pd70iysj4" path="res://playable_area.gd" id="4_fc0e3"]
 [ext_resource type="PackedScene" uid="uid://ci3a6rtlj4m3m" path="res://enemy_launcher.tscn" id="5_7jktm"]
 [ext_resource type="PackedScene" uid="uid://0jeaxemh6lhb" path="res://city.tscn" id="5_ryrav"]
@@ -17,6 +18,7 @@ point_count = 2
 [node name="Game" type="Node"]
 process_mode = 3
 script = ExtResource("1_ryrav")
+game_state = ExtResource("2_e2o6t")
 
 [node name="PauseMenu" type="VBoxContainer" parent="."]
 process_mode = 2
@@ -58,6 +60,43 @@ text = "Restart"
 [node name="Quit" type="Button" parent="PauseMenu"]
 layout_mode = 2
 text = "Desktop"
+
+[node name="WaveTransiter" type="VBoxContainer" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("3_j5wjh")
+game_state = ExtResource("2_e2o6t")
+
+[node name="Label" type="Label" parent="WaveTransiter"]
+layout_mode = 2
+text = "New Wave"
+horizontal_alignment = 1
+
+[node name="ScoreContainer" type="HBoxContainer" parent="WaveTransiter"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="WaveTransiter/ScoreContainer"]
+layout_mode = 2
+text = "Score:"
+
+[node name="Score" type="Label" parent="WaveTransiter/ScoreContainer"]
+layout_mode = 2
+
+[node name="TimerDisplay" type="Label" parent="WaveTransiter"]
+layout_mode = 2
+horizontal_alignment = 1
+
+[node name="Timer" type="Timer" parent="WaveTransiter"]
+one_shot = true
 
 [node name="Hud" type="Control" parent="."]
 process_mode = 1
@@ -107,6 +146,7 @@ game_state = ExtResource("2_e2o6t")
 [node name="City" parent="PlayableArea" instance=ExtResource("5_ryrav")]
 
 [node name="EnemyLauncher" parent="PlayableArea" instance=ExtResource("5_7jktm")]
+starting_missile_quantity = 5
 
 [node name="EnemyLaunchPath" type="Path2D" parent="PlayableArea/EnemyLauncher"]
 curve = SubResource("Curve2D_7jktm")
