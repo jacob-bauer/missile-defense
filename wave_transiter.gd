@@ -7,14 +7,16 @@ extends VBoxContainer
 func _ready() -> void:
 	visible = false
 	game_state.score_changed.connect(_on_score_changed)
+	game_state.wave_changed.connect(transition)
 
 
 func _on_score_changed(score: int) -> void:
 	$ScoreContainer/Score.text = str(score)
 
 
-func transition() -> void:
+func transition(_new_wave: int) -> void:
 	visible = true
+	# for some reaon this is counting down 2 seconds at a time
 	while seconds_between_waves > 0:
 		$TimerDisplay.text = str(seconds_between_waves)
 		await get_tree().create_timer(1).timeout

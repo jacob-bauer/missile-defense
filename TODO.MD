@@ -7,6 +7,10 @@
 - When the pause menu comes up, we need to hide WaveTransiter if it is visible, and unhide it once the pause menu goes away if it was
 	- There is a bug where when you pause once the wave transition is enabled you can't select the first few options in PauseMenu
 
+# Bugs
+- When two enemy missiles collide they will explode even if one of them has not been detonated by a friendly missile yet
+	- The intended behavior is that an enemy missile will only explode when colliding with either a friendly missile explosion or an enemy missile explosion
+
 # Critical
 - When the game loads in, there should be a countdown to the game start, and thereon on new waves
 	- New waves should have increasing difficulty, in enemy missile quantity, speed of launch, and missile speed

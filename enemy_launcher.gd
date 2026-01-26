@@ -31,9 +31,11 @@ var _current_ammo: int:
 
 func _ready() -> void:
 	_current_ammo = starting_missile_quantity
+	game_state.begin_wave.connect(begin_attack)
 
 
 func begin_attack() -> void:
+	print("Beginning attack")
 	_start_timer()
 
 
