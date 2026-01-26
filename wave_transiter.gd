@@ -18,7 +18,8 @@ func transition(_new_wave: int) -> void:
 	visible = true
 	while seconds_between_waves > 0:
 		$TimerDisplay.text = str(seconds_between_waves)
-		await get_tree().create_timer(1).timeout
+		$Timer.start(1)
+		await $Timer.timeout
 		seconds_between_waves -= 1
 	
 	visible = false
