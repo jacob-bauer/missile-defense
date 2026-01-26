@@ -2,8 +2,19 @@
 # TODO
 
 ## Immediate Scratch pad
+- Failure criteria:
+	- All cities destroyed
+- When all cities are destroyed
+	- Pause the game
+	- Display the score
+	- Give the user the option to save their score
+	- Give the user the option to quit to menu
+	- Give the user the option to restart
+	- Give the user the option to quit to desktop
 
 ## Bugs
+- GameData.GameOver is getting triggered before all cities are destroyed
+- When an enemy missile hits a city it explodes and blocks other enemy missiles from also hitting that city during it's explosion
 
 ## Critical
 - Failing a wave should lead into a game over mode

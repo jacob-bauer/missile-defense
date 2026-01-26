@@ -28,6 +28,8 @@ func _ready() -> void:
 
 func _on_begin_wave() -> void:
 	$AnimatedSprite2D.frame = Health_States.FULL
+	_health = 3
+	$FullHealthPolygon.set_deferred("disabled", false)
 
 
 func _on_missile_hit(obj: Object) -> void:
