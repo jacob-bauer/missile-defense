@@ -1,9 +1,6 @@
 extends Node
 
 
-var paused: bool = false
-
-
 @export var game_state: GameData = load("res://shared_game_data.tres")
 
 
@@ -19,4 +16,5 @@ func _input(event: InputEvent) -> void:
 
 func toggle_pause() -> void:
 	$PauseMenu.visible = not $PauseMenu.visible
+	game_state.pause.emit($PauseMenu.visible)
 	get_tree().paused = not get_tree().paused

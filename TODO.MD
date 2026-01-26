@@ -9,11 +9,15 @@
 		- What settings should be used for each level
 
 # Bugs
-- When the pause menu comes up, we need to hide WaveTransiter if it is visible, and unhide it once the pause menu goes away if it was
-        - There is a bug where when you pause once the wave transition is enabled you can't select the first few options in PauseMenu
+- You can still shoot missiles while waiting for the countdown
 - When two enemy missiles collide they will explode even if one of them has not been detonated by a friendly missile yet
 	- The intended behavior is that an enemy missile will only explode when colliding with either a friendly missile explosion or an enemy missile explosion
 # Critical
+- Failing a wave should lead into a game over mode
+	- You should be able to save a high score
+	- You should be able to restart
+	- You should be able to quit to menu
+	- You should be able to quit to desktop
 - Defeating or surviving waves should lead into playing new waves
 - Enemy missiles in the original game could split into multiple warheads partway through their flight.
 	- This can be another knob to turn as we increase difficulty over time

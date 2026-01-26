@@ -9,6 +9,8 @@ signal wave_completed()
 signal missile_hit(obj: Object)
 @warning_ignore("unused_signal")
 signal begin_wave()
+@warning_ignore("unused_signal")
+signal pause(paused: bool)
 
 
 enum Collision_Layers {
