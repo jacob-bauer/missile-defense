@@ -3,7 +3,6 @@ class_name City
 
 
 signal out_of_ammo
-signal cities_destroyed
 
 
 var _silos_with_ammo = 3
@@ -23,6 +22,13 @@ func _ready() -> void:
 		$CityBlock3/TargetPosition.global_position,
 		$CityBlock4/TargetPosition.global_position
 	]
+	
+	game_state.begin_wave.connect(_on_begin_wave)
+
+
+func _on_begin_wave() -> void:
+	_silos_with_ammo = 3
+	_city_blocks = 4
 
 
 func _on_silo_out_of_ammo(_silo: Silo) -> void:
@@ -34,7 +40,7 @@ func _on_silo_out_of_ammo(_silo: Silo) -> void:
 func _on_city_block_destroyed() -> void:
 	_city_blocks -= 1
 	if _city_blocks == 0:
-		cities_destroyed.emit()
+		game_state.city_destroyed.emit()
 
 
 func launch(target_position: Vector2) -> void:
