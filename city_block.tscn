@@ -42,7 +42,7 @@ animations = [{
 }]
 
 [node name="CityBlock" type="Area2D"]
-collision_layer = 6
+collision_layer = 4
 collision_mask = 2
 script = ExtResource("1_ih8wv")
 game_state = ExtResource("2_jve3n")

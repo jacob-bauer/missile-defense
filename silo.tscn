@@ -300,6 +300,8 @@ animations = [{
 }]
 
 [node name="Silo" type="Area2D"]
+collision_layer = 4
+collision_mask = 2
 script = ExtResource("1_hi88l")
 game_state = ExtResource("2_q65c1")
 friendly = true
