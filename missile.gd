@@ -2,6 +2,18 @@ extends Area2D
 class_name Missile
 
 
+var _launch_log: String =\
+"""-----------------------
+Name:\t{name}
+Target:\t{target}
+Speed:\t{speed}
+Friendly:\t{friendly}"""
+var _explosion_log: String =\
+"""-----------------------
+Name:\t{name}
+Position:\t{position}
+Target Reached:\t{target_reached}"""
+var _actual_target_reached: bool = true
 var _target_reached_before: bool = false
 var _exploded: bool = false
 var _line_tween: Tween
@@ -52,6 +64,11 @@ func _draw() -> void:
 
 
 func launch(silo_position: Vector2, target_position: Vector2, friendly: bool = true) -> void:
+	print(_launch_log.format({"name":get_path(),
+							  "target":target_position,
+							  "speed":flight_speed,
+							  "friendly":friendly}))
+	
 	if friendly:
 		$CollisionShape2D.disabled = true
 	
@@ -85,6 +102,10 @@ func _on_target_reached() -> void:
 	if not _target_reached_before:
 		_target_reached_before = true
 		
+		print(_explosion_log.format({"name":get_path(),
+							 		 "position":position,
+							 		 "target_reached":true}))
+		
 		if _line_tween.is_running():
 			_line_tween.kill()
 		
@@ -109,11 +130,13 @@ func _on_target_reached() -> void:
 
 func _on_area_entered(area: Area2D) -> void:
 	if not _friendly and not _exploded and area is Missile:
+		_actual_target_reached = false
 		collision_layer = GameData.Collision_Layers.FRIENDLY_MISSILES
 		_exploded = true
 		_target_position = $CollisionShape2D.position
 	
 	elif not _friendly and not _exploded and (area is CityBlock or area is Silo):
+		_actual_target_reached = true
 		collision_layer = 0
 	
 	game_state.missile_hit.emit(area)

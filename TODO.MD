@@ -2,6 +2,18 @@
 # TODO
 
 ## Immediate Scratch pad
+- We're going to do a bit of logging first
+	- Missile:
+		- Launched
+			- Path
+			- Intended target position
+			- Speed
+			- Friendly
+		- Destroyed
+			- Path
+			- Actual target position
+	- Think about how to log object initialization and beginning conditions
+	- Think about how to log the end of the game
 - Failure criteria:
 	- All cities destroyed
 - When all cities are destroyed
