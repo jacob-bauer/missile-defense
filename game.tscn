@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://dhepst38oy8io"]
+[gd_scene format=3 uid="uid://dhepst38oy8io"]
 
 [ext_resource type="Script" uid="uid://ci6y6wfhidmlk" path="res://game.gd" id="1_ryrav"]
 [ext_resource type="Resource" uid="uid://dlqdmmx1dpyne" path="res://shared_game_data.tres" id="2_e2o6t"]
@@ -15,12 +15,12 @@ _data = {
 }
 point_count = 2
 
-[node name="Game" type="Node"]
+[node name="Game" type="Node" unique_id=1933812451]
 process_mode = 3
 script = ExtResource("1_ryrav")
 game_state = ExtResource("2_e2o6t")
 
-[node name="PauseMenu" type="VBoxContainer" parent="."]
+[node name="PauseMenu" type="VBoxContainer" parent="." unique_id=577426528]
 process_mode = 2
 visible = false
 z_index = 4096
@@ -39,29 +39,29 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 script = ExtResource("2_eow3j")
 
-[node name="Label" type="Label" parent="PauseMenu"]
+[node name="Label" type="Label" parent="PauseMenu" unique_id=1654753992]
 layout_mode = 2
 text = "Paused"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Play" type="Button" parent="PauseMenu"]
+[node name="Play" type="Button" parent="PauseMenu" unique_id=1515843898]
 layout_mode = 2
 text = "Play"
 
-[node name="Menu" type="Button" parent="PauseMenu"]
+[node name="Menu" type="Button" parent="PauseMenu" unique_id=1887071467]
 layout_mode = 2
 text = "Menu"
 
-[node name="Restart" type="Button" parent="PauseMenu"]
+[node name="Restart" type="Button" parent="PauseMenu" unique_id=1955766766]
 layout_mode = 2
 text = "Restart"
 
-[node name="Quit" type="Button" parent="PauseMenu"]
+[node name="Quit" type="Button" parent="PauseMenu" unique_id=942374835]
 layout_mode = 2
 text = "Desktop"
 
-[node name="WaveTransiter" type="VBoxContainer" parent="."]
+[node name="WaveTransiter" type="VBoxContainer" parent="." unique_id=997463587]
 process_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -77,29 +77,29 @@ grow_vertical = 2
 script = ExtResource("3_j5wjh")
 game_state = ExtResource("2_e2o6t")
 
-[node name="Label" type="Label" parent="WaveTransiter"]
+[node name="Label" type="Label" parent="WaveTransiter" unique_id=1908650375]
 layout_mode = 2
 text = "New Wave"
 horizontal_alignment = 1
 
-[node name="ScoreContainer" type="HBoxContainer" parent="WaveTransiter"]
+[node name="ScoreContainer" type="HBoxContainer" parent="WaveTransiter" unique_id=671539901]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="WaveTransiter/ScoreContainer"]
+[node name="Label" type="Label" parent="WaveTransiter/ScoreContainer" unique_id=257708498]
 layout_mode = 2
 text = "Score:"
 
-[node name="Score" type="Label" parent="WaveTransiter/ScoreContainer"]
+[node name="Score" type="Label" parent="WaveTransiter/ScoreContainer" unique_id=1728266578]
 layout_mode = 2
 
-[node name="TimerDisplay" type="Label" parent="WaveTransiter"]
+[node name="TimerDisplay" type="Label" parent="WaveTransiter" unique_id=2146123479]
 layout_mode = 2
 horizontal_alignment = 1
 
-[node name="Timer" type="Timer" parent="WaveTransiter"]
+[node name="Timer" type="Timer" parent="WaveTransiter" unique_id=1828197393]
 one_shot = true
 
-[node name="Hud" type="Control" parent="."]
+[node name="Hud" type="Control" parent="." unique_id=1667483973]
 process_mode = 1
 z_index = 4096
 layout_mode = 3
@@ -112,7 +112,7 @@ grow_vertical = 2
 script = ExtResource("3_feb5d")
 game_state = ExtResource("2_e2o6t")
 
-[node name="HudBackground" type="ColorRect" parent="Hud"]
+[node name="HudBackground" type="ColorRect" parent="Hud" unique_id=179914591]
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
@@ -120,7 +120,7 @@ offset_bottom = 24.0
 grow_horizontal = 2
 color = Color(0.18359044, 0.18359044, 0.18359044, 1)
 
-[node name="Score" type="Label" parent="Hud"]
+[node name="Score" type="Label" parent="Hud" unique_id=1153162128]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -132,26 +132,26 @@ grow_horizontal = 2
 text = "Score"
 horizontal_alignment = 1
 
-[node name="Wave" type="Label" parent="Hud"]
+[node name="Wave" type="Label" parent="Hud" unique_id=33440665]
 layout_mode = 1
 offset_left = 11.0
 offset_right = 40.0
 offset_bottom = 23.0
 text = "Wave"
 
-[node name="PlayableArea" type="Node2D" parent="."]
+[node name="PlayableArea" type="Node2D" parent="." unique_id=2142222488]
 process_mode = 1
 script = ExtResource("4_fc0e3")
 game_state = ExtResource("2_e2o6t")
 
-[node name="City" parent="PlayableArea" instance=ExtResource("5_ryrav")]
+[node name="City" parent="PlayableArea" unique_id=1479266572 instance=ExtResource("5_ryrav")]
 
-[node name="EnemyLauncher" parent="PlayableArea" instance=ExtResource("5_7jktm")]
+[node name="EnemyLauncher" parent="PlayableArea" unique_id=242854403 instance=ExtResource("5_7jktm")]
 
-[node name="EnemyLaunchPath" type="Path2D" parent="PlayableArea/EnemyLauncher"]
+[node name="EnemyLaunchPath" type="Path2D" parent="PlayableArea/EnemyLauncher" unique_id=1707677906]
 curve = SubResource("Curve2D_7jktm")
 
-[node name="EnemyLaunchPosition" type="PathFollow2D" parent="PlayableArea/EnemyLauncher/EnemyLaunchPath"]
+[node name="EnemyLaunchPosition" type="PathFollow2D" parent="PlayableArea/EnemyLauncher/EnemyLaunchPath" unique_id=1656334817]
 position = Vector2(0, -24)
 
 [connection signal="button_down" from="PauseMenu/Play" to="PauseMenu" method="_on_play_button_down"]
