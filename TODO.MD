@@ -5,7 +5,7 @@
 - Failure criteria:
 	- All cities destroyed
 - When all cities are destroyed
-	- Pause the game
+	- Disable the pause menu
 	- Display the score
 	- Give the user the option to save their score
 	- Give the user the option to quit to menu
