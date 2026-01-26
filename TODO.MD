@@ -3,10 +3,10 @@
 
 ## Immediate Scratch pad
 - Enemy Launcher needs to have a function to reset to a new wave
-	- I'm thinking we put level settings in some kind of file which is polled every level
-	- Godot supports JSON, so that's what we will do.
-		- We'll have to specify some kind of format to represent how a level should play out and
-		- What settings should be used for each level
+	- Based on the wave, the number of missiles will increase, to a certain maximum (let's try 100)
+	- Based on the wave, the missile speed will increase, to a certain maximum (let's try 125 pixels per second)
+	- At what rate should these increases occur?
+		- Maybe, base_setting * 0.1 * wave when wave > 1
 
 # Bugs
 - You can still shoot missiles while waiting for the countdown
