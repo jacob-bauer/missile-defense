@@ -8,7 +8,8 @@ var paused: bool = false
 
 
 func _ready() -> void:
-	toggle_pause(false)
+	$PauseMenu.visible = false
+	get_tree().paused = false
 
 
 func _input(event: InputEvent) -> void:
@@ -16,7 +17,6 @@ func _input(event: InputEvent) -> void:
 		toggle_pause()
 
 
-func toggle_pause(pause: bool = not paused) -> void:
-	paused = pause
-	$PauseMenu.visible = paused
-	get_tree().paused = paused
+func toggle_pause() -> void:
+	$PauseMenu.visible = not $PauseMenu.visible
+	get_tree().paused = not get_tree().paused
