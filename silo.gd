@@ -16,8 +16,14 @@ var enemies_should_target_here: Vector2:
 @export var friendly: bool
 @export var missile_prototype: PackedScene = preload("res://missile.tscn")
 @export var missile_speed: int = 240
-@export var missile_quantity: int = 10:
+@export var base_missile_quantity = 10
+
+
+var missile_quantity: int = 10:
 	set(value):
+		if value > 30:
+			value = 30
+			
 		$Stockpile.frame = value
 		missile_quantity = value
 		
@@ -28,17 +34,25 @@ var enemies_should_target_here: Vector2:
 
 
 func _ready() -> void:
+	game_state.begin_wave.connect(_set_missile_quantity)
 	game_state.missile_hit.connect(_on_missile_hit)
-	game_state.friendly_ammunition += missile_quantity
-	missile_quantity = missile_quantity # Missile Quantity is not displayed unless it is changed
+	_set_missile_quantity()
 	if friendly:
 		collision_layer = GameData.Collision_Layers.CITY
 		collision_mask = GameData.Collision_Layers.ENEMY_MISSILES
 	
-	$Stockpile.frame = missile_quantity
-	
 	$AnimatedSprite2D.frame = randi_range(0, 6)
 	$AnimatedSprite2D.play("rotate_radar")
+
+
+func _set_missile_quantity() -> void:
+	if game_state.wave > 1:
+		missile_quantity = base_missile_quantity + ceili(base_missile_quantity * 0.1 * game_state.wave)
+	else:
+		missile_quantity = base_missile_quantity
+	
+	game_state.friendly_ammunition = missile_quantity
+	$Stockpile.frame = missile_quantity
 
 
 func launch(target_position: Vector2, launch_position: Vector2 = $LaunchPosition.global_position) -> void:
