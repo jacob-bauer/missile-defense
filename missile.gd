@@ -85,8 +85,6 @@ func _on_target_reached() -> void:
 	if not _target_reached_before:
 		_target_reached_before = true
 		
-		collision_layer = GameData.Collision_Layers.FRIENDLY_MISSILES # After we explode, we will explode other enemy missiles
-		
 		if _line_tween.is_running():
 			_line_tween.kill()
 		
@@ -111,9 +109,12 @@ func _on_target_reached() -> void:
 
 func _on_area_entered(area: Area2D) -> void:
 	if not _friendly and not _exploded and area is Missile:
-		collision_mask = collision_mask | GameData.Collision_Layers.ENEMY_MISSILES
+		collision_layer = GameData.Collision_Layers.FRIENDLY_MISSILES
 		_exploded = true
 		_target_position = $CollisionShape2D.position
-		_on_target_reached()
+	
+	elif not _friendly and not _exploded and (area is CityBlock or area is Silo):
+		collision_layer = 0
 	
 	game_state.missile_hit.emit(area)
+	_on_target_reached()
