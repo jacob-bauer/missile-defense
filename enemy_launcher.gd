@@ -5,7 +5,7 @@ class_name EnemyLauncher
 var _completed_missiles_quantity: int:
 	set(value):
 		_completed_missiles_quantity = value
-		if value == base_missile_quantity:
+		if value == _wave_missile_quantity:
 			game_state.wave_completed.emit()
 	
 	get:
@@ -16,7 +16,7 @@ var _current_ammo: int:
 	set(value):
 		_current_ammo = value
 		if value <= 0:
-			game_state.wave_launched.emit(base_missile_quantity)
+			game_state.wave_launched.emit(_wave_missile_quantity)
 
 	get:
 		return _current_ammo
@@ -39,9 +39,10 @@ func _ready() -> void:
 
 
 func begin_attack() -> void:
-	var wave = game_state.wave
 	_wave_missile_quantity = base_missile_quantity
+	_completed_missiles_quantity = 0
 	_wave_missile_speed = base_missile_speed
+	var wave = game_state.wave
 	if wave > 1:
 		_wave_missile_quantity += roundi(_wave_missile_quantity * difficulty_increase_per_wave * wave)
 		_wave_missile_speed += roundi(_wave_missile_speed * difficulty_increase_per_wave * wave)
@@ -57,7 +58,7 @@ func _on_launch_countdown_timeout() -> void:
 	
 	if _current_ammo > 0:
 		_current_ammo -= 1
-		$Launcher.launch(target_position, launch_position, base_missile_speed, false)
+		$Launcher.launch(target_position, launch_position, _wave_missile_speed, false)
 		_start_timer()
 
 

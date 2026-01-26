@@ -2,6 +2,7 @@ extends Area2D
 class_name Missile
 
 
+var _target_reached_before: bool = false
 var _exploded: bool = false
 var _line_tween: Tween
 var _friendly: bool
@@ -79,26 +80,30 @@ func set_initial_physics_layers() -> void:
 
 
 func _on_target_reached() -> void:
-	if _line_tween.is_running():
-		_line_tween.kill()
-	
-	$Line2D.queue_free()
-	position = _target_position
-	$CollisionShape2D.position = Vector2.ZERO
-	$CollisionShape2D.set_deferred("disabled", false)
-	
-	var explosion_growth = get_tree().create_tween()
-	explosion_growth.set_parallel()
-	explosion_growth.tween_property($CollisionShape2D.shape, "radius", explosion_radius, explosion_transition_time / 2)
-	explosion_growth.tween_property(self, "_current_radius", explosion_radius, explosion_transition_time / 2)
-	explosion_growth.chain()
-	explosion_growth.tween_interval(explosion_time_at_max)
-	explosion_growth.chain()
-	explosion_growth.tween_property($CollisionShape2D.shape, "radius", 0, explosion_transition_time / 2)
-	explosion_growth.tween_property(self, "_current_radius", 0, explosion_transition_time / 2)
-	
-	await explosion_growth.finished
-	queue_free()
+	# It is possible for this method to get multipled times before this missile frees itself.
+	# Therefore, we don't want to do anything at all here if this method has been started once
+	if not _target_reached_before:
+		_target_reached_before = true
+		if _line_tween.is_running():
+			_line_tween.kill()
+		
+		$Line2D.queue_free()
+		position = _target_position
+		$CollisionShape2D.position = Vector2.ZERO
+		$CollisionShape2D.set_deferred("disabled", false)
+		
+		var explosion_growth = get_tree().create_tween()
+		explosion_growth.set_parallel()
+		explosion_growth.tween_property($CollisionShape2D.shape, "radius", explosion_radius, explosion_transition_time / 2)
+		explosion_growth.tween_property(self, "_current_radius", explosion_radius, explosion_transition_time / 2)
+		explosion_growth.chain()
+		explosion_growth.tween_interval(explosion_time_at_max)
+		explosion_growth.chain()
+		explosion_growth.tween_property($CollisionShape2D.shape, "radius", 0, explosion_transition_time / 2)
+		explosion_growth.tween_property(self, "_current_radius", 0, explosion_transition_time / 2)
+		
+		await explosion_growth.finished
+		queue_free()
 
 
 func _on_area_entered(area: Area2D) -> void:

@@ -2,6 +2,7 @@ extends VBoxContainer
 
 
 var _transitioning: bool = false
+var _seconds_remaining: int
 
 
 @export var game_state: GameData = load("res://shared_game_data.tres")
@@ -28,11 +29,12 @@ func _on_score_changed(score: int) -> void:
 func transition(_new_wave: int) -> void:
 	visible = true
 	_transitioning = true
-	while seconds_between_waves > 0:
-		$TimerDisplay.text = str(seconds_between_waves)
+	_seconds_remaining = seconds_between_waves
+	while _seconds_remaining > 0:
+		$TimerDisplay.text = str(_seconds_remaining)
 		$Timer.start(1)
 		await $Timer.timeout
-		seconds_between_waves -= 1
+		_seconds_remaining -= 1
 	
 	visible = false
 	_transitioning = false
