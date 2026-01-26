@@ -16,7 +16,6 @@ func _on_score_changed(score: int) -> void:
 
 func transition(_new_wave: int) -> void:
 	visible = true
-	# for some reaon this is counting down 2 seconds at a time
 	while seconds_between_waves > 0:
 		$TimerDisplay.text = str(seconds_between_waves)
 		await get_tree().create_timer(1).timeout

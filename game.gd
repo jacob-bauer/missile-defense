@@ -9,7 +9,6 @@ var paused: bool = false
 
 func _ready() -> void:
 	toggle_pause(false)
-	game_state.wave = 1
 
 
 func _input(event: InputEvent) -> void:

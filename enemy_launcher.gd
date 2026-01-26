@@ -35,7 +35,6 @@ func _ready() -> void:
 
 
 func begin_attack() -> void:
-	print("Beginning attack")
 	_start_timer()
 
 
