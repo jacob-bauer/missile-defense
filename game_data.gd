@@ -11,6 +11,10 @@ signal missile_hit(obj: Object)
 signal begin_wave()
 @warning_ignore("unused_signal")
 signal pause(paused: bool)
+@warning_ignore("unused_signal")
+signal begin_countdown()
+@warning_ignore("unused_signal")
+signal end_countdown()
 
 
 enum Collision_Layers {

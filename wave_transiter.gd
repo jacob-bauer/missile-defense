@@ -27,6 +27,7 @@ func _on_score_changed(score: int) -> void:
 
 
 func transition(_new_wave: int) -> void:
+	game_state.begin_countdown.emit()
 	visible = true
 	_transitioning = true
 	_seconds_remaining = seconds_between_waves

@@ -4,7 +4,6 @@
 ## Immediate Scratch pad
 
 ## Bugs
-- You can still shoot missiles while waiting for the countdown
 
 ## Critical
 - Failing a wave should lead into a game over mode
