@@ -5,8 +5,7 @@
 
 ## Bugs
 - You can still shoot missiles while waiting for the countdown
-- When two enemy missiles collide they will explode even if one of them has not been detonated by a friendly missile yet
-	- The intended behavior is that an enemy missile will only explode when colliding with either a friendly missile explosion or an enemy missile explosion
+
 ## Critical
 - Failing a wave should lead into a game over mode
 	- You should be able to save a high score
