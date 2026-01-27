@@ -65,9 +65,13 @@ func _reset_state() -> void:
 	print(_reset_log)
 	score = 0
 	wave = 1
-	missile_hit.connect(_on_missile_hit)
-	wave_launched.connect(_on_wave_launched)
-	wave_completed.connect(_on_wave_completed)
+	
+	if not missile_hit.is_connected(_on_missile_hit):
+		missile_hit.connect(_on_missile_hit)
+	if not wave_launched.is_connected(_on_wave_launched):
+		wave_launched.connect(_on_wave_launched)
+	if not wave_completed.is_connected(_on_wave_completed):
+		wave_completed.connect(_on_wave_completed)
 
 
 func _on_wave_completed() -> void:
