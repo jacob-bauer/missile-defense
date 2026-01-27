@@ -3,8 +3,6 @@
 
 ## Immediate Scratch pad
 - We're going to do a bit of logging first
-	- City
-		- All cityblocks destroyed
 	- Main Menu
 		- Loading in
 		- Selecting a new scene
