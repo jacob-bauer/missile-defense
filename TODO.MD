@@ -3,9 +3,6 @@
 
 ## Immediate Scratch pad
 - We're going to do a bit of logging first
-	- Main Menu
-		- Loading in
-		- Selecting a new scene
 	- Pause menu
 		- Paused
 		- Unpaused
