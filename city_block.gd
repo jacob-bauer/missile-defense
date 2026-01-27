@@ -21,7 +21,6 @@ enum Health_States {
 
 func _ready() -> void:	
 	$AnimatedSprite2D.frame = Health_States.FULL
-	
 	game_state.missile_hit.connect(_on_missile_hit)
 
 

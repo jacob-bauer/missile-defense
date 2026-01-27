@@ -13,8 +13,12 @@
 	- Give the user the option to quit to desktop
 
 ## Bugs
+- Whenever a cityblock is permanently destroyed, it can still be targeted by EnemyLauncher in future waves
+	- Ideally that position would no longer be targeted
+	- Additionally, we need a way to add and remove targets anyway, to enable "bonus cities" (see non-critical about city regeneration)
 
 ## Critical
+- Whenever a city is permanently destroyed, it is still able to be targeted by EnemyLauncher in future waves. Fix this
 - Playtesting shows that we need slower initial difficulty growth
 	- So that we can start with i.e. 5 missiles, then grow by one each wave to 10, with no speed increase, and then by like 10% per wave over base each wave thereafter
 - Playtesting shows that we need to limit the maximum speed of enemy missiles
@@ -37,6 +41,7 @@
 	- Should the players score be saved when quitting early? I.e. by pressing the x on the window?
 		- No. It shouldn't.
 ## Non-Critical
+- Every certain number of points, if a player has lost a city, a random city will reappear in it's position
 
 ## Notes
 
