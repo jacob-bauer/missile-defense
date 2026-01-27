@@ -3,8 +3,9 @@
 
 ## Immediate Scratch pad
 - We're going to do a bit of logging first
-	- Think about how to log object initialization and beginning conditions
-	- Think about how to log the end of the game
+	- Add logging to main menu
+		- When the main menu is loaded into
+		- When we change to another scene
 - Failure criteria:
 	- All cities destroyed
 - When all cities are destroyed
@@ -18,6 +19,7 @@
 ## Bugs
 
 ## Critical
+- Refactor Pause Menu to be responisble for itself
 - Cities should not rebuild between waves
 	- Instead, after a certain number of points, a destroyed city, if one exists will be selected at random and rebuilt.
 - Failing a wave should lead into a game over mode
