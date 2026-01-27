@@ -24,11 +24,11 @@ func _ready() -> void:
 	]
 	
 	game_state.begin_wave.connect(_on_begin_wave)
+	_city_blocks = 4
 
 
 func _on_begin_wave() -> void:
 	_silos_with_ammo = 3
-	_city_blocks = 4
 
 
 func _on_silo_out_of_ammo(_silo: Silo) -> void:
@@ -40,7 +40,7 @@ func _on_silo_out_of_ammo(_silo: Silo) -> void:
 func _on_city_block_destroyed() -> void:
 	_city_blocks -= 1
 	if _city_blocks == 0:
-		game_state.city_destroyed.emit()
+		game_state.game_over.emit()
 
 
 func launch(target_position: Vector2) -> void:

@@ -15,6 +15,7 @@ signal begin_wave()
 signal pause(paused: bool)
 signal begin_countdown()
 signal end_countdown()
+signal game_over()
 @warning_ignore_restore("unused_signal")
 
 

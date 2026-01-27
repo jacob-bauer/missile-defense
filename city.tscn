@@ -1,33 +1,33 @@
-[gd_scene load_steps=5 format=3 uid="uid://0jeaxemh6lhb"]
+[gd_scene format=3 uid="uid://0jeaxemh6lhb"]
 
 [ext_resource type="PackedScene" uid="uid://be4wgdv5vpmsw" path="res://silo.tscn" id="1_m7k8b"]
 [ext_resource type="Script" uid="uid://do5i3263saip7" path="res://city.gd" id="1_o3tkm"]
 [ext_resource type="PackedScene" uid="uid://3daa5yh5dggb" path="res://city_block.tscn" id="2_m7k8b"]
 [ext_resource type="Resource" uid="uid://dlqdmmx1dpyne" path="res://shared_game_data.tres" id="2_wglf0"]
 
-[node name="City" type="Node2D"]
+[node name="City" type="Node2D" unique_id=1296698841]
 script = ExtResource("1_o3tkm")
 game_state = ExtResource("2_wglf0")
 
-[node name="Silo" parent="." instance=ExtResource("1_m7k8b")]
+[node name="Silo" parent="." unique_id=683132455 instance=ExtResource("1_m7k8b")]
 position = Vector2(40, 448)
 
-[node name="Silo2" parent="." instance=ExtResource("1_m7k8b")]
+[node name="Silo2" parent="." unique_id=201149945 instance=ExtResource("1_m7k8b")]
 position = Vector2(320, 448)
 
-[node name="Silo3" parent="." instance=ExtResource("1_m7k8b")]
+[node name="Silo3" parent="." unique_id=38564328 instance=ExtResource("1_m7k8b")]
 position = Vector2(600, 448)
 
-[node name="CityBlock" parent="." instance=ExtResource("2_m7k8b")]
+[node name="CityBlock" parent="." unique_id=869163732 instance=ExtResource("2_m7k8b")]
 position = Vector2(136, 448)
 
-[node name="CityBlock2" parent="." instance=ExtResource("2_m7k8b")]
+[node name="CityBlock2" parent="." unique_id=799935538 instance=ExtResource("2_m7k8b")]
 position = Vector2(224, 448)
 
-[node name="CityBlock3" parent="." instance=ExtResource("2_m7k8b")]
+[node name="CityBlock3" parent="." unique_id=1273404157 instance=ExtResource("2_m7k8b")]
 position = Vector2(416, 448)
 
-[node name="CityBlock4" parent="." instance=ExtResource("2_m7k8b")]
+[node name="CityBlock4" parent="." unique_id=1861388535 instance=ExtResource("2_m7k8b")]
 position = Vector2(504, 448)
 
 [connection signal="out_of_ammo" from="Silo" to="." method="_on_silo_out_of_ammo"]
