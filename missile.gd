@@ -3,15 +3,13 @@ class_name Missile
 
 
 var _launch_log: String =\
-"""-----------------------
-Missile Event
+GameData.log_separator + """Missile Event
 Name:\t{name}
 Target:\t{target}
 Speed:\t{speed}
 Friendly:\t{friendly}"""
 var _explosion_log: String =\
-"""-----------------------
-Missile Event
+GameData.log_separator + """Missile Event
 Name:\t{name}
 Position:\t{position}
 Target Reached:\t{target_reached}"""

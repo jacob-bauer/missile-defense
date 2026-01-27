@@ -2,14 +2,15 @@ class_name GameData
 extends Resource
 
 
-var _wave_log: String = """-----------------------
-Game Event
+const log_separator: String = "-----------------------\n"
+
+
+var _wave_log: String = log_separator + """Game Event
 Wave:\t{wave}
 Score:\t{score}"""
 
-var _reset_log: String = "-----------------------
-Game Event
-Reset GameData"
+var _reset_log: String = log_separator + """Game Event
+Reset GameData"""
 
 
 signal score_changed(new_score: int)

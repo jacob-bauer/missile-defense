@@ -3,9 +3,22 @@
 
 ## Immediate Scratch pad
 - We're going to do a bit of logging first
-	- Add logging to main menu
-		- When the main menu is loaded into
-		- When we change to another scene
+	- CityBlock
+		- Verbose: When damage is taken
+		- When destroyed
+	- City
+		- All cityblocks destroyed
+	- Main Menu
+		- Loading in
+		- Selecting a new scene
+	- Pause menu
+		- Paused
+		- Unpaused
+		- verbose: Restarted
+		- verbose: Main Menu
+		- verbose: Desktop
+	- Game.gd
+		- Application exited
 - Failure criteria:
 	- All cities destroyed
 - When all cities are destroyed
@@ -19,16 +32,21 @@
 ## Bugs
 
 ## Critical
+- Playtesting shows that we need slower initial difficulty growth
+	- So that we can start with i.e. 5 missiles, then grow by one each wave to 10, with no speed increase, and then by like 10% per wave over base each wave thereafter
+- Playtesting shows that we need to limit the maximum speed of enemy missiles
+	- Speed became to quick around wave 7
+		- This should be speed roughly 43 pixels per second
+		- Maybe round it out to 50 pxiels per second
 - Refactor Pause Menu to be responisble for itself
 - Cities should not rebuild between waves
+	- Currently, cities are rebuilt between each wave. This makes the game almost unlosable
 	- Instead, after a certain number of points, a destroyed city, if one exists will be selected at random and rebuilt.
 - Failing a wave should lead into a game over mode
 	- You should be able to save a high score
 	- You should be able to restart
 	- You should be able to quit to menu
 	- You should be able to quit to desktop
-- The enemy should make it a point to make sure that each city is targeted by at least 3 missiles before targeting any city with more missiles.
-	- You can get VERY FAR into the game without actually doing anything without this.
 - Enemy missiles in the original game could split into multiple warheads partway through their flight.
 	- This can be another knob to turn as we increase difficulty over time
 - We need to introduce a new smart bomb type, which avoids friendly missiles on it's way to the target

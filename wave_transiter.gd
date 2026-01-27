@@ -1,8 +1,8 @@
 extends VBoxContainer
 
 
-var _countdown_log: String = """-----------------------
-Countdown Event
+var _countdown_log: String =\
+GameData.log_separator + """Countdown Event
 {reason}"""
 
 
