@@ -38,6 +38,7 @@ grow_vertical = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 script = ExtResource("2_eow3j")
+game_state = ExtResource("2_e2o6t")
 
 [node name="Label" type="Label" parent="PauseMenu" unique_id=1654753992]
 layout_mode = 2

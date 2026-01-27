@@ -1,6 +1,20 @@
 extends VBoxContainer
 
 
+@export var game_state: GameData
+
+
+func _ready() -> void:
+	visible = false
+	get_tree().paused = false
+
+
+func toggle_pause() -> void:
+	visible = not visible
+	game_state.pause.emit(visible)
+	get_tree().paused = visible
+
+
 func _on_play_button_down() -> void:
 	var pause_key: InputEvent = InputMap.action_get_events("Pause")[0]
 	pause_key.pressed = true

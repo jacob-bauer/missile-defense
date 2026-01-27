@@ -28,7 +28,6 @@
 	- Speed became to quick around wave 7
 		- This should be speed roughly 43 pixels per second
 		- Maybe round it out to 50 pxiels per second
-- Refactor Pause Menu to be responisble for itself
 - Cities should not rebuild between waves
 	- Currently, cities are rebuilt between each wave. This makes the game almost unlosable
 	- Instead, after a certain number of points, a destroyed city, if one exists will be selected at random and rebuilt.
