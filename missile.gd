@@ -2,18 +2,6 @@ extends Area2D
 class_name Missile
 
 
-var _launch_log: String =\
-GameData.log_separator + """Missile Event
-Name:\t{name}
-Target:\t{target}
-Speed:\t{speed}
-Friendly:\t{friendly}"""
-var _explosion_log: String =\
-GameData.log_separator + """Missile Event
-Name:\t{name}
-Position:\t{position}
-Target Reached:\t{target_reached}"""
-
 var _actual_target_reached: bool = true
 var _target_reached_before: bool = false
 var _exploded: bool = false
@@ -65,11 +53,6 @@ func _draw() -> void:
 
 
 func launch(silo_position: Vector2, target_position: Vector2, friendly: bool = true) -> void:
-	print_verbose(_launch_log.format({"name":get_path(),
-							  "target":target_position,
-							  "speed":flight_speed,
-							  "friendly":friendly}))
-	
 	if friendly:
 		$CollisionShape2D.disabled = true
 	
@@ -102,10 +85,6 @@ func _on_target_reached() -> void:
 	# Therefore, we don't want to do anything at all here if this method has been started once
 	if not _target_reached_before:
 		_target_reached_before = true
-		
-		print_verbose(_explosion_log.format({"name":get_path(),
-							 		 		 "position":position,
-							 		 		 "target_reached":true}))
 		
 		if _line_tween.is_running():
 			_line_tween.kill()

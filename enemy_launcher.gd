@@ -2,21 +2,10 @@ extends Node
 class_name EnemyLauncher
 
 
-var _log_string: String =\
-GameData.log_separator + """Enemy Launch Event
-{begin_or_end}
-Wave:\t{wave}
-Quantity:\t{quantity}"""
-
-
 var _completed_missiles_quantity: int:
 	set(value):
 		_completed_missiles_quantity = value
 		if value == _wave_missile_quantity:
-			print(_log_string.format({"begin_or_end":"Attack Completed",
-									  "wave":game_state.wave,
-									  "quantity":_completed_missiles_quantity}))
-			
 			game_state.wave_completed.emit()
 	
 	get:
@@ -50,10 +39,6 @@ func _ready() -> void:
 
 
 func begin_attack() -> void:
-	print(_log_string.format({"begin_or_end":"Begin Attack",
-							  "wave":game_state.wave,
-							  "quantity":_wave_missile_quantity}))
-	
 	_wave_missile_quantity = base_missile_quantity
 	_completed_missiles_quantity = 0
 	_wave_missile_speed = base_missile_speed

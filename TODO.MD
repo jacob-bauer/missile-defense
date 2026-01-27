@@ -2,13 +2,6 @@
 # TODO
 
 ## Immediate Scratch pad
-- We're going to do a bit of logging first
-	- Pause menu
-		- Paused
-		- Unpaused
-		- verbose: Restarted
-		- verbose: Main Menu
-		- verbose: Desktop
 - Failure criteria:
 	- All cities destroyed
 - When all cities are destroyed

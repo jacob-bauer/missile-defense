@@ -5,14 +5,6 @@ extends Resource
 const log_separator: String = "-----------------------\n"
 
 
-var _wave_log: String = log_separator + """Game Event
-Wave:\t{wave}
-Score:\t{score}"""
-
-var _reset_log: String = log_separator + """Game Event
-Reset GameData"""
-
-
 signal score_changed(new_score: int)
 signal wave_changed(new_wave: int)
 signal wave_launched(missile_quantity: int)
@@ -45,7 +37,6 @@ var score: int:
 
 var wave: int:
 	set(value):
-		print(_wave_log.format({"wave":wave, "score":score}))
 		wave = value
 		wave_changed.emit(value)
 	get:
@@ -63,7 +54,6 @@ var damage_taken: int = 0
 
 
 func _reset_state() -> void:
-	print(_reset_log)
 	score = 0
 	wave = 1
 	

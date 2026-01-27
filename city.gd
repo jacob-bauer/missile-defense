@@ -2,11 +2,6 @@ extends Node2D
 class_name City
 
 
-var _log_cities_destroyed: String =\
-GameData.log_separator + \
-"""All Cities Destroyed"""
-
-
 signal out_of_ammo
 
 
@@ -45,7 +40,6 @@ func _on_silo_out_of_ammo(_silo: Silo) -> void:
 func _on_city_block_destroyed() -> void:
 	_city_blocks -= 1
 	if _city_blocks == 0:
-		print(_log_cities_destroyed)
 		game_state.city_destroyed.emit()
 
 

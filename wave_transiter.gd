@@ -1,11 +1,6 @@
 extends VBoxContainer
 
 
-var _countdown_log: String =\
-GameData.log_separator + """Countdown Event
-{reason}"""
-
-
 var _transitioning: bool = false
 var _seconds_remaining: int
 
@@ -20,10 +15,6 @@ func _ready() -> void:
 	game_state.pause.connect(_on_pause)
 
 
-func _log(reason: String) -> void:
-	print_verbose(_countdown_log.format({"reason":reason}))
-
-
 func _on_pause(paused: bool) -> void:
 	if paused:
 		visible = false
@@ -36,7 +27,6 @@ func _on_score_changed(score: int) -> void:
 
 
 func transition(_new_wave: int) -> void:
-	_log("Starting")
 	game_state.begin_countdown.emit()
 	visible = true
 	_transitioning = true
@@ -49,5 +39,4 @@ func transition(_new_wave: int) -> void:
 	
 	visible = false
 	_transitioning = false
-	_log("Ending")
 	game_state.begin_wave.emit()
