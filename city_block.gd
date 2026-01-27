@@ -2,6 +2,18 @@ extends Area2D
 class_name CityBlock
 
 
+var _log_damage: String =\
+GameData.log_separator +\
+"""CityBlock Damaged
+Name:\t{name}
+New Health:\t{health}"""
+
+var _log_destroyed: String =\
+GameData.log_separator +\
+"""CityBlock Destroyed
+Name:\t{name}"""
+
+
 signal destroyed
 
 
@@ -54,5 +66,9 @@ func reduce_health() -> void:
 	_decrement_health()
 	
 	if _health == 0:
+		print(_log_destroyed.format({"name":get_path()}))
 		$FullHealthPolygon.set_deferred("disabled", true)
 		destroyed.emit()
+	else:
+		print_verbose(_log_damage.format({"name":get_path,
+										  "health":_health}))

@@ -3,9 +3,6 @@
 
 ## Immediate Scratch pad
 - We're going to do a bit of logging first
-	- CityBlock
-		- Verbose: When damage is taken
-		- When destroyed
 	- City
 		- All cityblocks destroyed
 	- Main Menu
