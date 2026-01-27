@@ -3,6 +3,7 @@ class_name Silo
 
 
 var _ammo_log: String = """-----------------------
+Silo Event
 Name:\t{name}
 Reason:\t{reason}
 Ammo:{ammo}"""
@@ -52,7 +53,7 @@ func _ready() -> void:
 
 
 func _log(reason: String) -> void:
-	print(_ammo_log.format({"name":get_path(),
+	print_verbose(_ammo_log.format({"name":get_path(),
 							"reason":reason,
 							"ammo":missile_quantity}))
 

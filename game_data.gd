@@ -3,10 +3,12 @@ extends Resource
 
 
 var _wave_log: String = """-----------------------
+Game Event
 Wave:\t{wave}
 Score:\t{score}"""
 
 var _reset_log: String = "-----------------------
+Game Event
 Reset GameData"
 
 
@@ -15,14 +17,12 @@ signal wave_changed(new_wave: int)
 signal wave_launched(missile_quantity: int)
 signal wave_completed()
 signal missile_hit(obj: Object)
-@warning_ignore("unused_signal")
+@warning_ignore_start("unused_signal")
 signal begin_wave()
-@warning_ignore("unused_signal")
 signal pause(paused: bool)
-@warning_ignore("unused_signal")
 signal begin_countdown()
-@warning_ignore("unused_signal")
 signal end_countdown()
+@warning_ignore_restore("unused_signal")
 
 
 enum Collision_Layers {

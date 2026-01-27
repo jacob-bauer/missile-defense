@@ -33,7 +33,7 @@
 - We need to introduce a bomber type, which is destructible itself, but also launches missiles as it travels horizontally through the screen.
 - Save and track scores
 	- Should the players score be saved when quitting early? I.e. by pressing the x on the window?
-
+		- No. It shouldn't.
 ## Non-Critical
 
 ## Notes
