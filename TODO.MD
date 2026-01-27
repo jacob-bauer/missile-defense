@@ -4,6 +4,7 @@
 ## Immediate Scratch pad
 - Failure criteria:
 	- All cities destroyed
+		- Emit GameData.game_over 
 - When all cities are destroyed
 	- Disable the pause menu
 	- Display the score
@@ -16,6 +17,15 @@
 - Whenever a cityblock is permanently destroyed, it can still be targeted by EnemyLauncher in future waves
 	- Ideally that position would no longer be targeted
 	- Additionally, we need a way to add and remove targets anyway, to enable "bonus cities" (see non-critical about city regeneration)
+	- One possible way to fix this is to convert GameData.target_positions to a dictionary {<node>:<target_data>}
+		- <target_data> is some structure with the following fields:
+			- Target Global Position: Vector2
+			- Target Enabled: bool
+		- When assembling this the first time, just put all the target global positions in and enable them
+		- When a cityblock dies, you can simply find it by reference and set it's Enabled to false, us the "is_same(a, b)" function to compare by reference
+		- When enemy launcher reads this, it simply gets all the values from the dict, and selects a random one
+			- If that one is enabled, it launches to it and then deducts its launch count
+			- Otherwise, it removes it from it's copy of the dict and selects a new random one
 
 ## Critical
 - Whenever a city is permanently destroyed, it is still able to be targeted by EnemyLauncher in future waves. Fix this
