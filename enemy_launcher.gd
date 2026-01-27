@@ -23,12 +23,19 @@ var _current_ammo: int:
 
 
 var _wave_missile_quantity: int
-var _wave_missile_speed: int
+var _wave_missile_speed: int:
+	set(value):
+		if value > missile_max_speed:
+			value = missile_max_speed
+		_wave_missile_speed = value
+	get:
+		return _wave_missile_speed
 
 
 @export var difficulty_increase_per_wave: float = 0.1
 @export var base_missile_quantity: int = 10
 @export var base_missile_speed: int = 25
+@export var missile_max_speed: int = 50
 @export var min_seconds_between_launches: float = 0.1
 @export var max_seconds_between_launches: float = 0.5
 @export var game_state: GameData
