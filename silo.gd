@@ -2,8 +2,8 @@ extends Area2D
 class_name Silo
 
 
-var _ammo_log: String = """-----------------------
-Silo Event
+var _ammo_log: String =\
+GameData.log_separator + """Silo Event
 Name:\t{name}
 Reason:\t{reason}
 Ammo:{ammo}"""
@@ -84,5 +84,9 @@ func _on_missile_hit(obj: Object) -> void:
 
 
 func _reduce_ammunition(reduction: int) -> void:
-	missile_quantity -= reduction
-	game_state.friendly_ammunition -= reduction
+	if missile_quantity >= reduction:
+		missile_quantity -= reduction
+		game_state.friendly_ammunition -= reduction
+	else:
+		missile_quantity = 0
+		game_state.friendly_ammunition -= reduction - missile_quantity
