@@ -2,6 +2,12 @@ extends Area2D
 class_name Silo
 
 
+var _ammo_log: String = """-----------------------
+Name:\t{name}
+Reason:\t{reason}
+Ammo:{ammo}"""
+
+
 signal out_of_ammo(Silo)
 
 
@@ -45,6 +51,12 @@ func _ready() -> void:
 	$AnimatedSprite2D.play("rotate_radar")
 
 
+func _log(reason: String) -> void:
+	print(_ammo_log.format({"name":get_path(),
+							"reason":reason,
+							"ammo":missile_quantity}))
+
+
 func _set_missile_quantity() -> void:
 	if game_state.wave > 1:
 		missile_quantity = base_missile_quantity + ceili(base_missile_quantity * 0.1 * game_state.wave)
@@ -53,11 +65,13 @@ func _set_missile_quantity() -> void:
 	
 	game_state.friendly_ammunition = missile_quantity
 	$Stockpile.frame = missile_quantity
+	_log("New Wave: " + str(game_state.wave))
 
 
 func launch(target_position: Vector2, launch_position: Vector2 = $LaunchPosition.global_position) -> void:
 	if missile_quantity > 0:
 		_reduce_ammunition(1)
+		_log("Launched Missile")
 		
 		$Launcher.launch(target_position, launch_position, missile_speed, friendly)
 
@@ -65,6 +79,7 @@ func launch(target_position: Vector2, launch_position: Vector2 = $LaunchPosition
 func _on_missile_hit(obj: Object) -> void:
 	if obj == self:
 		_reduce_ammunition(ammo_lowered_on_hit)
+		_log("Took Damage")
 
 
 func _reduce_ammunition(reduction: int) -> void:

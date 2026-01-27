@@ -3,15 +3,6 @@
 
 ## Immediate Scratch pad
 - We're going to do a bit of logging first
-	- Missile:
-		- Launched
-			- Path
-			- Intended target position
-			- Speed
-			- Friendly
-		- Destroyed
-			- Path
-			- Actual target position
 	- Think about how to log object initialization and beginning conditions
 	- Think about how to log the end of the game
 - Failure criteria:
@@ -27,6 +18,8 @@
 ## Bugs
 
 ## Critical
+- Cities should not rebuild between waves
+	- Instead, after a certain number of points, a destroyed city, if one exists will be selected at random and rebuilt.
 - Failing a wave should lead into a game over mode
 	- You should be able to save a high score
 	- You should be able to restart
