@@ -9,8 +9,6 @@
 		- verbose: Restarted
 		- verbose: Main Menu
 		- verbose: Desktop
-	- Game.gd
-		- Application exited
 - Failure criteria:
 	- All cities destroyed
 - When all cities are destroyed
