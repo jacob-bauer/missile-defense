@@ -47,4 +47,5 @@ func reduce_health() -> void:
 	
 	if _health == 0:
 		$FullHealthPolygon.set_deferred("disabled", true)
+		game_state.target_positions[self].enabled = false
 		destroyed.emit()
