@@ -22,9 +22,8 @@
 	- Speed became too quick around wave 7
 		- This should be speed roughly 43 pixels per second
 		- Maybe round it out to 50 pxiels per second
-- Cities should not rebuild between waves
-	- Currently, cities are rebuilt between each wave. This makes the game almost unlosable
-	- Instead, after a certain number of points, a destroyed city, if one exists will be selected at random and rebuilt.
+- Player should earn health at certain point thresholds
+		- Instead, after a certain number of points, a destroyed city, if one exists will be selected at random and rebuilt.
 - Failing a wave should lead into a game over mode
 	- You should be able to save a high score
 	- You should be able to restart
