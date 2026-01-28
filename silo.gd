@@ -43,8 +43,6 @@ func _ready() -> void:
 	
 	$AnimatedSprite2D.frame = randi_range(0, 6)
 	$AnimatedSprite2D.play("rotate_radar")
-	
-	game_state.target_positions[self] = TargetData.new($TargetPosition.global_position, true)
 
 
 func _set_missile_quantity() -> void:
@@ -54,13 +52,14 @@ func _set_missile_quantity() -> void:
 		missile_quantity = base_missile_quantity
 	
 	game_state.friendly_ammunition = missile_quantity
+	game_state.target_positions.set(self, TargetData.new($TargetPosition.global_position, true))
+	
 	$Stockpile.frame = missile_quantity
 
 
 func launch(target_position: Vector2, launch_position: Vector2 = $LaunchPosition.global_position) -> void:
 	if missile_quantity > 0:
 		_reduce_ammunition(1)
-		
 		$Launcher.launch(target_position, launch_position, missile_speed, friendly)
 
 
@@ -76,3 +75,4 @@ func _reduce_ammunition(reduction: int) -> void:
 	else:
 		missile_quantity = 0
 		game_state.friendly_ammunition -= (reduction - missile_quantity)
+		game_state.target_positions[self].enabled = false

@@ -58,8 +58,18 @@ func begin_attack() -> void:
 	_start_timer()
 
 
+func _get_random_target_position() -> Vector2:
+	var target: TargetData = null
+	while not target:
+		var tmp: TargetData = game_state.target_positions.values().pick_random()
+		if tmp.enabled:
+			target = tmp
+	
+	return target.global_position
+
+
 func _on_launch_countdown_timeout() -> void:
-	var target_position: Vector2 = game_state.target_positions.pick_random()
+	var target_position: Vector2 = _get_random_target_position()
 	$EnemyLaunchPath/EnemyLaunchPosition.progress_ratio = randf()
 	var launch_position: Vector2 = $EnemyLaunchPath/EnemyLaunchPosition.global_position
 	

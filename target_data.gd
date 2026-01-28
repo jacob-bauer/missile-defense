@@ -6,7 +6,6 @@ var global_position: Vector2
 var enabled: bool
 
 
-@warning_ignore("shadowed_variable")
-func _init(global_position: Vector2, enabled: bool) -> void:
-	global_position = global_position
-	enabled = enabled
+func _init(glob_pos: Vector2, en: bool) -> void:
+	global_position = glob_pos
+	enabled = en

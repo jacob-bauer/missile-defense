@@ -45,7 +45,7 @@ var wave: int:
 
 
 # IMPORTANT
-var target_positions: Dictionary[Object, TargetData]
+var target_positions: Dictionary[Object, TargetData] = {}
 var friendly_ammunition: int
 var enemy_missiles_launched: int
 
