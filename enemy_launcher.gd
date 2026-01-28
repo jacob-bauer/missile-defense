@@ -25,8 +25,9 @@ var _current_ammo: int:
 var _wave_missile_quantity: int
 var _wave_missile_speed: int:
 	set(value):
-		if value > missile_max_speed:
-			value = missile_max_speed
+		# Commented out for playtest to determine probable good maximum speed
+		#if value > missile_max_speed:
+			#value = missile_max_speed
 		_wave_missile_speed = value
 	get:
 		return _wave_missile_speed
@@ -53,6 +54,13 @@ func begin_attack() -> void:
 	if wave > 1:
 		_wave_missile_quantity += roundi(_wave_missile_quantity * difficulty_increase_per_wave * wave)
 		_wave_missile_speed += roundi(_wave_missile_speed * difficulty_increase_per_wave * wave)
+	
+	var log_message: LogMessage = LogMessage.new("enemy_launcher",
+												get_path(),
+												GameLogger.LOG_LEVEL.INFORMATIONAL,
+												49,
+												"Beginning Attack\nMissile Quantity:\t{quantity}\nMissile Speed:\t{speed}".format({"quantity":_wave_missile_quantity, "speed":_wave_missile_speed}))
+	game_logger.record_log_entry(log_message)
 	
 	_current_ammo = _wave_missile_quantity
 	_start_timer()

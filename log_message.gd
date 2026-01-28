@@ -15,21 +15,22 @@ var log_message: String:
 		pass
 	get:
 		return \
-		"""------------------------------
-		{log_level}\t:\t{node_type}
-		{datetime}
-		{node_name}\t:\t{line_of_code}
-		{payload}""".format({"log_level":GameLogger.LOG_LEVEL.keys()[log_level],
-							 "node_type":sender_name,
-							 "datetime":utc_datetime,
-							 "node_name":sender_path,
-							 "line_of_code":issuing_line,
-							 "payload":payload})
+		"""============================================================
+{log_level}\t:\t{node_type}
+{datetime}
+Name:\t{node_name}
+Line Number:\t{line_of_code}
+{payload}""".format({"log_level":GameLogger.LOG_LEVEL.keys()[int(sqrt(log_level))],
+					 "node_type":sender_name,
+					 "datetime":utc_datetime,
+					 "node_name":sender_path,
+					 "line_of_code":issuing_line,
+					 "payload":payload})
 
 
-func _init(sent_by: Node, level_flag: GameLogger.LOG_LEVEL, code_line: int, message: String) -> void:
-	sender_name = sent_by.get_class()
-	sender_path = sent_by.get_path()
+func _init(type_name: String, path: String, level_flag: GameLogger.LOG_LEVEL, code_line: int, message: String) -> void:
+	sender_name = type_name
+	sender_path = path
 	log_level = level_flag
 	issuing_line = code_line
 	payload = message

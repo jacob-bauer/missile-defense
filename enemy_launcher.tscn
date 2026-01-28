@@ -1,19 +1,19 @@
-[gd_scene load_steps=4 format=3 uid="uid://ci3a6rtlj4m3m"]
+[gd_scene format=3 uid="uid://ci3a6rtlj4m3m"]
 
 [ext_resource type="Script" uid="uid://dokhxyba5146c" path="res://enemy_launcher.gd" id="1_jxg7d"]
 [ext_resource type="Resource" uid="uid://dlqdmmx1dpyne" path="res://shared_game_data.tres" id="2_m1jem"]
 [ext_resource type="PackedScene" uid="uid://bgineyl7vu5uy" path="res://launcher.tscn" id="3_m1jem"]
 
-[node name="EnemyLauncher" type="Node"]
+[node name="EnemyLauncher" type="Node" unique_id=1092584879]
 script = ExtResource("1_jxg7d")
 min_seconds_between_launches = 0.25
 max_seconds_between_launches = 1.0
 game_state = ExtResource("2_m1jem")
 
-[node name="LaunchCountdown" type="Timer" parent="."]
+[node name="LaunchCountdown" type="Timer" parent="." unique_id=592339453]
 one_shot = true
 
-[node name="Launcher" parent="." instance=ExtResource("3_m1jem")]
+[node name="Launcher" parent="." unique_id=345887340 instance=ExtResource("3_m1jem")]
 
 [connection signal="timeout" from="LaunchCountdown" to="." method="_on_launch_countdown_timeout"]
 [connection signal="child_exiting_tree" from="Launcher" to="." method="_on_launcher_child_exiting_tree"]
