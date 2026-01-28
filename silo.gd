@@ -43,6 +43,8 @@ func _ready() -> void:
 	
 	$AnimatedSprite2D.frame = randi_range(0, 6)
 	$AnimatedSprite2D.play("rotate_radar")
+	
+	game_state.target_positions[self] = TargetData.new($TargetPosition.global_position, true)
 
 
 func _set_missile_quantity() -> void:

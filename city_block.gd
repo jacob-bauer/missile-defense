@@ -19,9 +19,11 @@ enum Health_States {
 }
 
 
-func _ready() -> void:	
+func _ready() -> void:
 	$AnimatedSprite2D.frame = Health_States.FULL
 	game_state.missile_hit.connect(_on_missile_hit)
+	
+	game_state.target_positions[self] = TargetData.new($TargetPosition.global_position, true)
 
 
 func _on_missile_hit(obj: Object) -> void:

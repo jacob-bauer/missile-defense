@@ -13,14 +13,6 @@ var _city_blocks = 4
 
 
 func _ready() -> void:
-	game_state.target_positions = {$Silo:TargetData.new($Silo/TargetPosition.global_position, true),
-								   $Silo2:TargetData.new($Silo2/TargetPosition.global_position, true),
-								   $Silo3:TargetData.new($Silo3/TargetPosition.global_position, true),
-								   $CityBlock:TargetData.new($CityBlock/TargetPosition.global_position, true),
-								   $CityBlock2:TargetData.new($CityBlock2/TargetPosition.global_position, true),
-								   $CityBlock3:TargetData.new($CityBlock3/TargetPosition.global_position, true),
-								   $CityBlock4:TargetData.new($CityBlock4/TargetPosition.global_position, true),}
-	
 	game_state.begin_wave.connect(_on_begin_wave)
 	_city_blocks = 4
 
