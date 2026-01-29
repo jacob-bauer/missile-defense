@@ -2,6 +2,8 @@
 # TODO
 
 ## Immediate Scratch pad
+- Logging should be oneline per log entry
+	- This really helps with searchability
 - Failure criteria:
 	- All cities destroyed
 		- Emit GameData.game_over 
