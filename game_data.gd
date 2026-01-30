@@ -2,7 +2,7 @@ class_name GameData
 extends Resource
 
 
-const log_separator: String = "-----------------------\n"
+const highscores_file_path: String = "user://highscores.txt"
 
 
 signal score_changed(new_score: int)
