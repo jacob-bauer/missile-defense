@@ -27,3 +27,6 @@ mono_crash.*.json
 
 # Allow TODO.MD to be open in nano while using git
 *.swp
+
+# Don't commit random experiments
+tooling/
