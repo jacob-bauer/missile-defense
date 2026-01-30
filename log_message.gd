@@ -22,17 +22,6 @@ var log_message: String:
 				"node_name":sender_path,
 				"line_of_code":issuing_line,
 				"payload":payload})
-		#"""============================================================
-#{log_level}\t:\t{node_type}
-#{datetime}
-#Name:\t{node_name}
-#Line Number:\t{line_of_code}
-#{payload}""".format({"log_level":GameLogger.LOG_LEVEL.keys()[int(sqrt(log_level))],
-					 #"node_type":sender_name,
-					 #"datetime":utc_datetime,
-					 #"node_name":sender_path,
-					 #"line_of_code":issuing_line,
-					 #"payload":payload})
 
 
 func _init(type_name: String, path: String, level_flag: GameLogger.LOG_LEVEL, code_line: int, message: String) -> void:

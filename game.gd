@@ -12,7 +12,6 @@ func _ready() -> void:
 	game_logger.requester_types.append_array(["enemy_launcher", "game_over"])
 	game_state.game_over.connect(_on_game_over)
 
-
 func _on_game_over() -> void:
 	_disable_pause = true
 
