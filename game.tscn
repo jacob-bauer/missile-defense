@@ -9,6 +9,9 @@
 [ext_resource type="PackedScene" uid="uid://ci3a6rtlj4m3m" path="res://enemy_launcher.tscn" id="5_7jktm"]
 [ext_resource type="PackedScene" uid="uid://0jeaxemh6lhb" path="res://city.tscn" id="5_ryrav"]
 
+[sub_resource type="LabelSettings" id="LabelSettings_j5wjh"]
+font_color = Color(1, 0.26, 0.26, 1)
+
 [sub_resource type="Curve2D" id="Curve2D_7jktm"]
 _data = {
 "points": PackedVector2Array(0, 0, 0, 0, 0, -24, 0, 0, 0, 0, 640, -24)
@@ -62,8 +65,44 @@ text = "Restart"
 layout_mode = 2
 text = "Desktop"
 
+[node name="GameOver" type="VBoxContainer" parent="." unique_id=1870607586]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="GameOver" unique_id=1885214957]
+layout_mode = 2
+text = "Game Over"
+label_settings = SubResource("LabelSettings_j5wjh")
+horizontal_alignment = 1
+
+[node name="SaveScore" type="Button" parent="GameOver" unique_id=378312838]
+layout_mode = 2
+text = "Save Score"
+
+[node name="Restart" type="Button" parent="GameOver" unique_id=1610434611]
+layout_mode = 2
+text = "Restart"
+
+[node name="Menu" type="Button" parent="GameOver" unique_id=1044012372]
+layout_mode = 2
+text = "Menu"
+
+[node name="Quit" type="Button" parent="GameOver" unique_id=2129802340]
+layout_mode = 2
+text = "Dekstop"
+
 [node name="WaveTransiter" type="VBoxContainer" parent="." unique_id=997463587]
 process_mode = 1
+visible = false
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
