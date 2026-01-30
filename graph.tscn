@@ -1,0 +1,34 @@
+[gd_scene format=3 uid="uid://dax3va7qa27i1"]
+
+[node name="Graph" type="Node" unique_id=1901394271]
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=280024809]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Graph" type="Control" parent="VBoxContainer" unique_id=285613138]
+clip_contents = true
+custom_minimum_size = Vector2(0, 240)
+layout_mode = 2
+
+[node name="ItemList" type="ItemList" parent="VBoxContainer" unique_id=860183571]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer" unique_id=845664949]
+layout_mode = 2
+alignment = 1
+
+[node name="ScoreGraph" type="Button" parent="VBoxContainer/HBoxContainer" unique_id=439232581]
+layout_mode = 2
+text = "Score"
+
+[node name="WaveGraph" type="Button" parent="VBoxContainer/HBoxContainer" unique_id=2126900954]
+layout_mode = 2
+text = "Wave"
+
+[node name="ScoreWaveGraph" type="Button" parent="VBoxContainer/HBoxContainer" unique_id=1097581311]
+layout_mode = 2
+text = "Score/Wave"

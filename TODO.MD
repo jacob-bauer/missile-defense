@@ -4,7 +4,15 @@
 ## Immediate Scratch pad
 - Save and track scores
 	- We'll need a graph scene from the main menu where we can display a graph of scores over time
-
+		- The graph should properly scale all axes based on the minimum and maximum values on that axes
+		- There should be three graphing options:
+			1) Score over time
+			2) Wave over time
+			3) Score/Wave over time
+		- There should be a visual line graph of data
+			- Which can handle zero or more data points
+		- There should be a scrollable window of all of the entries.
+			- Selecting an entry in the list should highlight it in the graph, and vice versa
 ## Bugs
 
 ## Critical
@@ -32,6 +40,9 @@
 ## Non-Critical
 - Every certain number of points, if a player has lost a city, a random city will reappear in it's position
 - When paused or on game over, we should hide the missile trails. They make it very hard to see the menu.
+
+## Juice
+- The score should tick up over time where it can, and the score that can't should be "bonus score" at the end of the round
 
 ## Notes
 
