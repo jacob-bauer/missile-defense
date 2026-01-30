@@ -1,12 +1,9 @@
 
 # TODO
 
-## Immediate Scratch pad
-- That's alot. Nearly as much work as the rest of the game so far
-	- Let's just generate a line graph of scores over time, without even any axes values
-	- We can make it really simple then, as we don't have to care about distances between dates
-		- Instead, each data point is just "the next time the user played"
-		- So the graph becomes "score over plays"
+## Immediate Scratch pad## Bugs
+
+## Critical
 - Save and track scores
 	- We'll need a graph scene from the main menu where we can display a graph of scores over time
 		- The graph should properly scale all axes based on the minimum and maximum values on that axes
@@ -18,9 +15,6 @@
 			- Which can handle zero or more data points
 		- There should be a scrollable window of all of the entries.
 			- Selecting an entry in the list should highlight it in the graph, and vice versa
-## Bugs
-
-## Critical
 - Scoring is incorrect. Reference conversation with chatGPT about scoring
 - Playtesting shows that we need slower initial difficulty growth
 	- So that we can start with i.e. 5 missiles, then grow by one each wave to 10, with no speed increase, and then by like 10% per wave over base each wave thereafter
