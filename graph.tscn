@@ -6,3 +6,4 @@
 script = ExtResource("1_41hjn")
 
 [node name="Line2D" type="Line2D" parent="." unique_id=1569802403]
+width = 1.0
