@@ -26,7 +26,7 @@ func _on_game_over() -> void:
 func save_score() -> void:
 	var high_scores: FileAccess = FileAccess.open("user://highscores.txt", FileAccess.READ_WRITE)
 	high_scores.seek_end()
-	high_scores.store_line("{datetime}, {wave}, {score}".format({"datetime":Time.get_datetime_string_from_system(true),
+	high_scores.store_line("{datetime},{wave},{score}".format({"datetime":Time.get_datetime_string_from_system(true),
 																"wave":game_state.wave,
 																"score":game_state.score}))
 	
