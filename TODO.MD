@@ -2,16 +2,6 @@
 # TODO
 
 ## Immediate Scratch pad
-- Failure criteria:
-	- All cities destroyed
-		- Emit GameData.game_over 
-- When all cities are destroyed
-	- Disable the pause menu
-	- Display the score
-	- Give the user the option to save their score
-	- Give the user the option to quit to menu
-	- Give the user the option to restart
-	- Give the user the option to quit to desktop
 
 ## Bugs
 
@@ -43,6 +33,7 @@
 		
 ## Non-Critical
 - Every certain number of points, if a player has lost a city, a random city will reappear in it's position
+- When paused or on game over, we should hide the missile trails. They make it very hard to see the menu.
 
 ## Notes
 

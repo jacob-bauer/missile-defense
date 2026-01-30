@@ -6,6 +6,7 @@
 [ext_resource type="Script" uid="uid://bflfan2hufwa5" path="res://hud.gd" id="3_feb5d"]
 [ext_resource type="Script" uid="uid://cft6qjoijva7k" path="res://wave_transiter.gd" id="3_j5wjh"]
 [ext_resource type="Script" uid="uid://crg2pd70iysj4" path="res://playable_area.gd" id="4_fc0e3"]
+[ext_resource type="Script" uid="uid://bgkjadjiovfyg" path="res://game_over.gd" id="4_vef74"]
 [ext_resource type="PackedScene" uid="uid://ci3a6rtlj4m3m" path="res://enemy_launcher.tscn" id="5_7jktm"]
 [ext_resource type="PackedScene" uid="uid://0jeaxemh6lhb" path="res://city.tscn" id="5_ryrav"]
 
@@ -66,6 +67,8 @@ layout_mode = 2
 text = "Desktop"
 
 [node name="GameOver" type="VBoxContainer" parent="." unique_id=1870607586]
+process_mode = 3
+z_index = 4096
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -77,12 +80,24 @@ offset_right = 20.0
 offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("4_vef74")
+game_state = ExtResource("2_e2o6t")
 
 [node name="Label" type="Label" parent="GameOver" unique_id=1885214957]
 layout_mode = 2
 text = "Game Over"
 label_settings = SubResource("LabelSettings_j5wjh")
 horizontal_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="GameOver" unique_id=654736519]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="GameOver/HBoxContainer" unique_id=1207302623]
+layout_mode = 2
+text = "Score:"
+
+[node name="Score" type="Label" parent="GameOver/HBoxContainer" unique_id=852192752]
+layout_mode = 2
 
 [node name="SaveScore" type="Button" parent="GameOver" unique_id=378312838]
 layout_mode = 2
@@ -98,7 +113,7 @@ text = "Menu"
 
 [node name="Quit" type="Button" parent="GameOver" unique_id=2129802340]
 layout_mode = 2
-text = "Dekstop"
+text = "Desktop"
 
 [node name="WaveTransiter" type="VBoxContainer" parent="." unique_id=997463587]
 process_mode = 1
@@ -199,3 +214,7 @@ position = Vector2(0, -24)
 [connection signal="button_down" from="PauseMenu/Menu" to="PauseMenu" method="_on_menu_button_down"]
 [connection signal="button_down" from="PauseMenu/Restart" to="PauseMenu" method="_on_restart_button_down"]
 [connection signal="button_down" from="PauseMenu/Quit" to="PauseMenu" method="_on_quit_button_down"]
+[connection signal="button_down" from="GameOver/SaveScore" to="GameOver" method="_on_save_score_button_down"]
+[connection signal="button_down" from="GameOver/Restart" to="GameOver" method="_on_restart_button_down"]
+[connection signal="button_down" from="GameOver/Menu" to="GameOver" method="_on_menu_button_down"]
+[connection signal="button_down" from="GameOver/Quit" to="GameOver" method="_on_quit_button_down"]
