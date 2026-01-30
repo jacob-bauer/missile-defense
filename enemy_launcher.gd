@@ -59,7 +59,7 @@ func begin_attack() -> void:
 												get_path(),
 												GameLogger.LOG_LEVEL.INFORMATIONAL,
 												49,
-												"Beginning Attack\nMissile Quantity:\t{quantity}\nMissile Speed:\t{speed}".format({"quantity":_wave_missile_quantity, "speed":_wave_missile_speed}))
+												"Beginning Attack\tMissile Quantity: {quantity} \tMissile Speed: {speed}".format({"quantity":_wave_missile_quantity, "speed":_wave_missile_speed}))
 	game_logger.record_log_entry(log_message)
 	
 	_current_ammo = _wave_missile_quantity

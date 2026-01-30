@@ -23,6 +23,8 @@
 	- So that we can start with i.e. 5 missiles, then grow by one each wave to 10, with no speed increase, and then by like 10% per wave over base each wave thereafter
 - Playtesting shows that we need to limit the maximum speed of enemy missiles
 	- I missed when exactly laurie said that speed became too great during her play test
+		- Laurie said 50 pixels per second was too much
+		- Jacob said 70 pixels per second was too much.
 	- I need to instrument enemy missile speed and hold another playtest
 	- So enemy missile speed should grow by 10% each wave and I need to not when laurie complains
 	- Then set the limit 10% higher than that
