@@ -2,8 +2,10 @@
 
 [ext_resource type="Script" uid="uid://crt1o5gy0h6pt" path="res://graph.gd" id="1_41hjn"]
 
-[node name="Graph" type="Node" unique_id=1901394271]
+[node name="Graph" type="Node2D" unique_id=389386645]
 script = ExtResource("1_41hjn")
 
-[node name="Line2D" type="Line2D" parent="." unique_id=1569802403]
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1478891916]
+
+[node name="Line2D" type="Line2D" parent="CanvasLayer" unique_id=1569802403]
 width = 1.0
