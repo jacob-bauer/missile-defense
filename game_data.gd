@@ -54,8 +54,6 @@ var wave: int:
 var target_positions: Dictionary[Object, TargetData] = {}
 var friendly_ammunition: int
 var enemy_missiles_launched: int
-
-
 var missiles_destroyed: int = 0
 var city_health: int = 0
 
@@ -74,8 +72,10 @@ func _reset_state() -> void:
 
 func _on_wave_completed() -> void:
 	var tmp_score: int = missiles_destroyed * 25
-	tmp_score += city_health * 100
-	pass
+	tmp_score += city_health * 50
+	tmp_score += friendly_ammunition * 5
+	
+	score += tmp_score * wave
 
 
 func _on_wave_launched(missile_quantity: int) -> void:
@@ -87,3 +87,6 @@ func _on_missile_hit(obj: Object) -> void:
 		var missile: Missile = obj as Missile
 		if not missile._friendly:
 			missiles_destroyed += 1
+	
+	elif obj is CityBlock:
+		city_health -= 1

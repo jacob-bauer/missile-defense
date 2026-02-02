@@ -23,7 +23,7 @@ func _on_begin_wave() -> void:
 
 
 func _on_silo_out_of_ammo(_silo: Silo) -> void:
-	_silos_with_ammo -= 1	
+	_silos_with_ammo -= 1
 	if _silos_with_ammo == 0:
 		out_of_ammo.emit()
 
