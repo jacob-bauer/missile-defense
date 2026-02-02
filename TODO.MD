@@ -4,13 +4,13 @@
 ## Immediate Scratch pad
 
 ## Bugs
-- GameData.friendly_ammunition is not being tracked correctly.
+
 
 ## Critical
 - Playtesting shows that we need slower initial difficulty growth
 	- So that we can start with i.e. 5 missiles, then grow by one each wave to 10, with no speed increase, and then by like 10% per wave over base each wave thereafter
 	- We also need to control how friendly ammunition grows
-	- We can accomplish this by sampling a curve. Then we can have a sigmoid function describe difficulty growth
+	- This is described by a sigmoid function. Ammunition should also grow somewhat as well.
 - Playtesting shows that we need to limit the maximum speed of enemy missiles
 	- I missed when exactly laurie said that speed became too great during her play test
 		- Laurie said 50 pixels per second was too much
@@ -20,8 +20,6 @@
 	- I need to instrument enemy missile speed and hold another playtest
 	- So enemy missile speed should grow by 10% each wave and I need to not when laurie complains
 	- Then set the limit 10% higher than that
-- Player should earn health at certain point thresholds
-		- Instead, after a certain number of points, a destroyed city, if one exists will be selected at random and rebuilt.
 - Enemy missiles in the original game could split into multiple warheads partway through their flight.
 	- This can be another knob to turn as we increase difficulty over time
 - We need to introduce a new smart bomb type, which avoids friendly missiles on it's way to the target
