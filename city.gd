@@ -30,13 +30,20 @@ func _on_score_changed(score: int) -> void:
 				if game_state.target_positions[target].enabled == false:
 					dead_cities.append(target)
 		
-		var bonus_city: CityBlock = dead_cities.pick_random()
-		_city_blocks += 1
-		bonus_city.reset_health()
+		if dead_cities.size() > 0:
+			var bonus_city: CityBlock = dead_cities.pick_random()
+			_city_blocks += 1
+			bonus_city.reset_health()
 
 
 func _on_begin_wave() -> void:
+	var total_ammo: int = 0
+	for target in game_state.target_positions:
+		if target is Silo:
+			total_ammo += target.missile_quantity
+	
 	_silos_with_ammo = 3
+	game_state.friendly_ammunition = total_ammo
 
 
 func _on_silo_out_of_ammo(_silo: Silo) -> void:

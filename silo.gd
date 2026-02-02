@@ -34,7 +34,8 @@ var missile_quantity: int = 10:
 
 
 func _ready() -> void:
-	game_state.begin_wave.connect(_set_missile_quantity)
+	#game_state.begin_wave.connect(_set_missile_quantity)
+	game_state.wave_completed.connect(_set_missile_quantity)
 	game_state.missile_hit.connect(_on_missile_hit)
 	_set_missile_quantity()
 	if friendly:
@@ -46,12 +47,9 @@ func _ready() -> void:
 
 
 func _set_missile_quantity() -> void:
-	if game_state.wave > 1:
-		missile_quantity = base_missile_quantity + ceili(base_missile_quantity * 0.1 * game_state.wave)
-	else:
-		missile_quantity = base_missile_quantity
+	missile_quantity = 10
 	
-	game_state.friendly_ammunition = missile_quantity
+	#game_state.friendly_ammunition += missile_quantity
 	game_state.target_positions.set(self, TargetData.new($TargetPosition.global_position, true))
 	
 	$Stockpile.frame = missile_quantity

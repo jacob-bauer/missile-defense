@@ -51,7 +51,7 @@ var wave: int:
 
 # IMPORTANT
 var target_positions: Dictionary[Object, TargetData] = {}
-var friendly_ammunition: int
+var friendly_ammunition: int = 0
 var enemy_missiles_launched: int
 var missiles_destroyed: int = 0
 var city_health: int = 0
@@ -77,6 +77,7 @@ func _on_wave_completed() -> void:
 	
 	score += tmp_score
 	wave += 1
+	friendly_ammunition = 0
 
 
 func _on_wave_launched(missile_quantity: int) -> void:
