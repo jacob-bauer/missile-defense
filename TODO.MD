@@ -2,10 +2,9 @@
 # TODO
 
 ## Immediate Scratch pad
-- The current algorithm for bonus cities will always populate cities from left to right
-	- You should get a random bonus city
 
 ## Bugs
+- GameData.friendly_ammunition is not being tracked correctly.
 
 ## Critical
 - Playtesting shows that we need slower initial difficulty growth

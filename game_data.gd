@@ -70,6 +70,7 @@ func _reset_state() -> void:
 
 
 func _on_wave_completed() -> void:
+	print(friendly_ammunition)
 	var tmp_score: int = missiles_destroyed * 25
 	tmp_score += city_health * 50
 	tmp_score += friendly_ammunition

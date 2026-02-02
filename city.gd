@@ -24,12 +24,15 @@ func _on_score_changed(score: int) -> void:
 	if score > current_bonus_threshold:
 		_bonus_cities_earned += 1
 		
+		var dead_cities: Array[CityBlock] = []
 		for target in game_state.target_positions:
 			if target is CityBlock:
 				if game_state.target_positions[target].enabled == false:
-					_city_blocks += 1
-					target.reset_health()
-					break
+					dead_cities.append(target)
+		
+		var bonus_city: CityBlock = dead_cities.pick_random()
+		_city_blocks += 1
+		bonus_city.reset_health()
 
 
 func _on_begin_wave() -> void:

@@ -31,6 +31,7 @@ func reset_health() -> void:
 	$FullHealthPolygon.set_deferred("disabled", false)
 	game_state.target_positions[self].enabled = true
 	game_state.city_health += 3
+	_health = 3
 
 
 func _on_missile_hit(obj: Object) -> void:
