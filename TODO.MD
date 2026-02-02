@@ -2,10 +2,8 @@
 # TODO
 
 ## Immediate Scratch pad
-- Cities respawn when crossing 10,000 point barriers
-	- Happens on the first wave after the wave that the point barrier was crossed
-	- Only happens if a city is completely destroyed
-	- If you do not have any cities down when crossing the barrier, this bonus is lost
+- The current algorithm for bonus cities will always populate cities from left to right
+	- You should get a random bonus city
 
 ## Bugs
 
@@ -13,6 +11,7 @@
 - Playtesting shows that we need slower initial difficulty growth
 	- So that we can start with i.e. 5 missiles, then grow by one each wave to 10, with no speed increase, and then by like 10% per wave over base each wave thereafter
 	- We also need to control how friendly ammunition grows
+	- We can accomplish this by sampling a curve. Then we can have a sigmoid function describe difficulty growth
 - Playtesting shows that we need to limit the maximum speed of enemy missiles
 	- I missed when exactly laurie said that speed became too great during her play test
 		- Laurie said 50 pixels per second was too much

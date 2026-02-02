@@ -9,8 +9,10 @@ var _disable_pause: bool = false
 
 func _ready() -> void:
 	game_logger.log_level_flags = GameLogger.LOG_LEVEL.INFORMATIONAL | GameLogger.LOG_LEVEL.STATUS | GameLogger.LOG_LEVEL.ERROR
-	game_logger.requester_types.append_array(["silo"])
+	game_logger.requester_types.append_array([])
 	game_state.game_over.connect(_on_game_over)
+	
+	game_state.score = 8000
 
 func _on_game_over() -> void:
 	_disable_pause = true

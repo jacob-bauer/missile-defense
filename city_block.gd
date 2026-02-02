@@ -20,10 +20,16 @@ enum Health_States {
 
 
 func _ready() -> void:
-	$AnimatedSprite2D.frame = Health_States.FULL
 	game_state.missile_hit.connect(_on_missile_hit)
-	
 	game_state.target_positions[self] = TargetData.new($TargetPosition.global_position, true)
+	
+	reset_health()
+
+
+func reset_health() -> void:
+	$AnimatedSprite2D.frame = Health_States.FULL
+	$FullHealthPolygon.set_deferred("disabled", false)
+	game_state.target_positions[self].enabled = true
 	game_state.city_health += 3
 
 

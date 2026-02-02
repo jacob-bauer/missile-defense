@@ -7,6 +7,7 @@ signal out_of_ammo
 
 var _silos_with_ammo = 3
 var _city_blocks = 4
+var _bonus_cities_earned: int = 1
 
 
 @export var game_state: GameData = load("res://shared_game_data.tres")
@@ -14,7 +15,21 @@ var _city_blocks = 4
 
 func _ready() -> void:
 	game_state.begin_wave.connect(_on_begin_wave)
+	game_state.score_changed.connect(_on_score_changed)
 	_city_blocks = 4
+
+
+func _on_score_changed(score: int) -> void:
+	var current_bonus_threshold = 10_000 * _bonus_cities_earned
+	if score > current_bonus_threshold:
+		_bonus_cities_earned += 1
+		
+		for target in game_state.target_positions:
+			if target is CityBlock:
+				if game_state.target_positions[target].enabled == false:
+					_city_blocks += 1
+					target.reset_health()
+					break
 
 
 func _on_begin_wave() -> void:
