@@ -57,7 +57,7 @@ var enemy_missiles_launched: int
 
 
 var missiles_destroyed: int = 0
-var damage_taken: int = 0
+var city_health: int = 0
 
 
 func _reset_state() -> void:
@@ -73,10 +73,9 @@ func _reset_state() -> void:
 
 
 func _on_wave_completed() -> void:
-	score += (friendly_ammunition - damage_taken + missiles_destroyed) * wave
-	damage_taken = 0
-	missiles_destroyed = 0
-	wave += 1
+	var tmp_score: int = missiles_destroyed * 25
+	tmp_score += city_health * 100
+	pass
 
 
 func _on_wave_launched(missile_quantity: int) -> void:
@@ -88,8 +87,3 @@ func _on_missile_hit(obj: Object) -> void:
 		var missile: Missile = obj as Missile
 		if not missile._friendly:
 			missiles_destroyed += 1
-	
-	elif obj is Silo:
-		damage_taken += 1
-	elif obj is CityBlock:
-		damage_taken += 1

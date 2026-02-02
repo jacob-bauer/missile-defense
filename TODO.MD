@@ -2,12 +2,22 @@
 # TODO
 
 ## Immediate Scratch pad
+- Revamp scoring:
+	- I need to know how many enemy missiles are destroyed
+	- I need to know the remaining city block health at the end of a wave
+	- I need to know the remaining ammunition at the end of a wave
 
 ## Bugs
 
 
 ## Critical
 - Scoring is incorrect. Reference conversation with chatGPT about scoring
+	- Destroying an enemy missile: 25
+	- City survives Wave: 100
+	- Ammo remaining: 5 per missile
+	
+	- These scores get multiplied by the current wave number
+	- We also have to get the balance of friendly ammo to enemy ammunition right
 - Playtesting shows that we need slower initial difficulty growth
 	- So that we can start with i.e. 5 missiles, then grow by one each wave to 10, with no speed increase, and then by like 10% per wave over base each wave thereafter
 - Playtesting shows that we need to limit the maximum speed of enemy missiles

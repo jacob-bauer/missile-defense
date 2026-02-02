@@ -19,6 +19,7 @@ func _ready() -> void:
 
 func _on_begin_wave() -> void:
 	_silos_with_ammo = 3
+	game_state.city_health = 12
 
 
 func _on_silo_out_of_ammo(_silo: Silo) -> void:
