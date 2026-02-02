@@ -1,20 +1,13 @@
 
 # TODO
 
-## Immediate Scratch pad## Bugs
+## Immediate Scratch pad
+
+## Bugs
 
 ## Critical
-- Save and track scores
-	- We'll need a graph scene from the main menu where we can display a graph of scores over time
-		- The graph should properly scale all axes based on the minimum and maximum values on that axes
-		- There should be three graphing options:
-			1) Score over time
-			2) Wave over time
-			3) Score/Wave over time
-		- There should be a visual line graph of data
-			- Which can handle zero or more data points
-		- There should be a scrollable window of all of the entries.
-			- Selecting an entry in the list should highlight it in the graph, and vice versa
+- We're just going to display a list of high scores on game over
+	- The users score is ALWAYS saved, even if they do not have a highscore
 - Scoring is incorrect. Reference conversation with chatGPT about scoring
 - Playtesting shows that we need slower initial difficulty growth
 	- So that we can start with i.e. 5 missiles, then grow by one each wave to 10, with no speed increase, and then by like 10% per wave over base each wave thereafter
@@ -23,6 +16,7 @@
 		- Laurie said 50 pixels per second was too much
 		- Jacob said 70 pixels per second was too much.
 			- Although I took my first damage at speed 55
+		- CJ crapped out at 65 pixels per second
 	- I need to instrument enemy missile speed and hold another playtest
 	- So enemy missile speed should grow by 10% each wave and I need to not when laurie complains
 	- Then set the limit 10% higher than that
@@ -39,6 +33,7 @@
 ## Non-Critical
 - Every certain number of points, if a player has lost a city, a random city will reappear in it's position
 - When paused or on game over, we should hide the missile trails. They make it very hard to see the menu.
+- Refactor logger so that we don't have to manually create a LogMessage object. We just pass in the message data
 
 ## Juice
 - The score should tick up over time where it can, and the score that can't should be "bonus score" at the end of the round

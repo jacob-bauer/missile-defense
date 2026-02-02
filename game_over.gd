@@ -11,12 +11,12 @@ func _ready() -> void:
 
 
 func _on_game_over() -> void:
-	var log_message: LogMessage = LogMessage.new("game_over",
+	game_logger.record_log_entry(LogMessage.new("game_over",
 												get_path(),
 												GameLogger.LOG_LEVEL.STATUS,
 												13,
-												"Game Over\tScore: {score}".format({"score":game_state.score}))
-	game_logger.record_log_entry(log_message)
+												"Game Over\tScore: {score}".format({"score":game_state.score})))
+
 	$HBoxContainer/Score.text = str(game_state.score)
 	get_tree().paused = true
 	visible = true
@@ -27,16 +27,22 @@ func save_score() -> void:
 	var high_scores: FileAccess = FileAccess.open(GameData.highscores_file_path, FileAccess.READ_WRITE)
 	if high_scores != null:
 		high_scores.seek_end()
-	high_scores.store_line("{datetime},{wave},{score}".format({"datetime":Time.get_datetime_string_from_system(true),
-																"wave":game_state.wave,
-																"score":game_state.score}))
-	
-	var log_message: LogMessage = LogMessage.new("game_over",
+		high_scores.store_line("{datetime},{wave},{score}".format({"datetime":Time.get_datetime_string_from_system(true),
+																	"wave":game_state.wave,
+																	"score":game_state.score}))
+			
+		game_logger.record_log_entry(LogMessage.new("game_over",
 												get_path(),
 												game_logger.LOG_LEVEL.INFORMATIONAL,
 												26,
-												"Saved high score at path: {path}".format({"path":ProjectSettings.globalize_path("user://highscores.txt")}))
-	game_logger.record_log_entry(log_message)
+												"Saved high score at path: {path}".format({"path":ProjectSettings.globalize_path("user://highscores.txt")})))
+		
+	else:
+		game_logger.record_log_entry(LogMessage.new("game_over",
+													get_path(),
+													game_logger.LOG_LEVEL.ERROR,
+													26,
+													"Failed to open or create highscores save file at {path}".format({"path":ProjectSettings.globalize_path(GameData.highscores_file_path)})))
 
 
 func _on_restart_button_down() -> void:

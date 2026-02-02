@@ -16,7 +16,7 @@ var log_message: String:
 	get:
 		return \
 		"[{log_level}][{node_type}][{datetime}][{node_name}][{line_of_code}]: {payload}"\
-		.format({"log_level":GameLogger.LOG_LEVEL.keys()[int(sqrt(log_level))],
+		.format({"log_level":GameLogger.LOG_LEVEL.keys()[roundi(sqrt(log_level))],
 				"node_type":sender_name,
 				"datetime":utc_datetime,
 				"node_name":sender_path,
