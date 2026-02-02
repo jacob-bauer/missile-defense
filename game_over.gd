@@ -16,11 +16,30 @@ func _on_game_over() -> void:
 												GameLogger.LOG_LEVEL.STATUS,
 												13,
 												"Game Over\tScore: {score}".format({"score":game_state.score})))
+	
+	if score_is_highscore(game_state.score):
+		$HBoxContainer/Score.text = "New High Score!: "
+	else:
+		$HBoxContainer/Score.text = "Final Score: "
 
 	$HBoxContainer/Score.text = str(game_state.score)
 	get_tree().paused = true
 	visible = true
 	save_score()
+
+
+func score_is_highscore(score: int) -> bool:
+	var high_scores: FileAccess = FileAccess.open(GameData.highscores_file_path, FileAccess.READ)
+	if high_scores != null:
+		var highest_score: int = 0
+		while not high_scores.eof_reached():
+			var line = high_scores.get_csv_line(",")
+			if line.size() > 1 and int(line[2]) > highest_score:
+				highest_score = int(line[2])
+		
+		return true if score > highest_score else false
+	else:
+		return false
 
 
 func save_score() -> void:
