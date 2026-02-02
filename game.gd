@@ -9,7 +9,7 @@ var _disable_pause: bool = false
 
 func _ready() -> void:
 	game_logger.log_level_flags = GameLogger.LOG_LEVEL.INFORMATIONAL | GameLogger.LOG_LEVEL.STATUS | GameLogger.LOG_LEVEL.ERROR
-	game_logger.requester_types.append_array(["enemy_launcher", "game_over"])
+	game_logger.requester_types.append_array(["game_over", "game_data"])
 	game_state.game_over.connect(_on_game_over)
 
 func _on_game_over() -> void:

@@ -5,10 +5,8 @@
 
 ## Bugs
 
+
 ## Critical
-- We're just going to display a list of high scores on game over
-	- The users score is ALWAYS saved, even if they do not have a highscore
-	- If the users score is a new highscore, tell them so.
 - Scoring is incorrect. Reference conversation with chatGPT about scoring
 - Playtesting shows that we need slower initial difficulty growth
 	- So that we can start with i.e. 5 missiles, then grow by one each wave to 10, with no speed increase, and then by like 10% per wave over base each wave thereafter

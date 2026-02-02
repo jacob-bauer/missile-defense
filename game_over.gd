@@ -18,9 +18,9 @@ func _on_game_over() -> void:
 												"Game Over\tScore: {score}".format({"score":game_state.score})))
 	
 	if score_is_highscore(game_state.score):
-		$HBoxContainer/Score.text = "New High Score!: "
+		$HBoxContainer/Label.text = "New High Score!: "
 	else:
-		$HBoxContainer/Score.text = "Final Score: "
+		$HBoxContainer/Label.text = "Final Score: "
 
 	$HBoxContainer/Score.text = str(game_state.score)
 	get_tree().paused = true
