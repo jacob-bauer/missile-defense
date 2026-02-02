@@ -24,6 +24,7 @@ func _ready() -> void:
 	game_state.missile_hit.connect(_on_missile_hit)
 	
 	game_state.target_positions[self] = TargetData.new($TargetPosition.global_position, true)
+	game_state.city_health += 3
 
 
 func _on_missile_hit(obj: Object) -> void:
@@ -45,6 +46,7 @@ func _decrement_health() -> void:
 
 func reduce_health() -> void:
 	_health -= 1
+	game_state.city_health -= 1
 	_decrement_health()
 	
 	if _health == 0:

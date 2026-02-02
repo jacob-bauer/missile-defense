@@ -2,13 +2,8 @@
 # TODO
 
 ## Immediate Scratch pad
-- Revamp scoring:
-	- I need to know how many enemy missiles are destroyed
-	- I need to know the remaining city block health at the end of a wave
-	- I need to know the remaining ammunition at the end of a wave
 
 ## Bugs
-
 
 ## Critical
 - Scoring is incorrect. Reference conversation with chatGPT about scoring

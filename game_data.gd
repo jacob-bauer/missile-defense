@@ -27,15 +27,14 @@ enum Collision_Layers {
 
 
 var score: int:
-	set(value):
-		if value < 0:
-			value = score
-		
+	set(value):		
 		game_logger.record_log_entry(LogMessage.new("game_data",
 											get_path(),
 											GameLogger.LOG_LEVEL.INFORMATIONAL,
 											29,
 											"Changing score from {old} to {new}".format({"old":score, "new":value})))
+		if value < 0:
+			value = score
 
 		score = value
 		score_changed.emit(value)
@@ -73,9 +72,10 @@ func _reset_state() -> void:
 func _on_wave_completed() -> void:
 	var tmp_score: int = missiles_destroyed * 25
 	tmp_score += city_health * 50
-	tmp_score += friendly_ammunition * 5
+	tmp_score += friendly_ammunition
 	
-	score += tmp_score * wave
+	score += tmp_score
+	wave += 1
 
 
 func _on_wave_launched(missile_quantity: int) -> void:

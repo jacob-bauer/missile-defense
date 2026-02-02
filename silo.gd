@@ -69,10 +69,20 @@ func _on_missile_hit(obj: Object) -> void:
 
 
 func _reduce_ammunition(reduction: int) -> void:
-	if missile_quantity >= reduction:
-		missile_quantity -= reduction
-		game_state.friendly_ammunition -= reduction
-	else:
-		missile_quantity = 0
-		game_state.friendly_ammunition -= (reduction - missile_quantity)
+	var actual_reduction: int = reduction
+	if reduction >= missile_quantity:
+		actual_reduction = reduction - missile_quantity
+	var old_quantity: int = missile_quantity
+	missile_quantity -= actual_reduction
+	game_state.friendly_ammunition -= actual_reduction
+	if reduction >= missile_quantity:
 		game_state.target_positions[self].enabled = false
+	
+	game_logger.record_log_entry(LogMessage.new("silo",
+												get_path(),
+												game_logger.LOG_LEVEL.INFORMATIONAL,
+												71,
+												"Reducing ammunition: Request: {req}\tActual:{act}\tOld: {old}\tNew: {new}". format({"req":reduction,
+																																	"act":actual_reduction,
+																																	"old":old_quantity,
+																																	"new":missile_quantity})))
