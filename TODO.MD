@@ -2,19 +2,17 @@
 # TODO
 
 ## Immediate Scratch pad
+- Cities respawn when crossing 10,000 point barriers
+	- Happens on the first wave after the wave that the point barrier was crossed
+	- Only happens if a city is completely destroyed
+	- If you do not have any cities down when crossing the barrier, this bonus is lost
 
 ## Bugs
 
 ## Critical
-- Scoring is incorrect. Reference conversation with chatGPT about scoring
-	- Destroying an enemy missile: 25
-	- City survives Wave: 100
-	- Ammo remaining: 5 per missile
-	
-	- These scores get multiplied by the current wave number
-	- We also have to get the balance of friendly ammo to enemy ammunition right
 - Playtesting shows that we need slower initial difficulty growth
 	- So that we can start with i.e. 5 missiles, then grow by one each wave to 10, with no speed increase, and then by like 10% per wave over base each wave thereafter
+	- We also need to control how friendly ammunition grows
 - Playtesting shows that we need to limit the maximum speed of enemy missiles
 	- I missed when exactly laurie said that speed became too great during her play test
 		- Laurie said 50 pixels per second was too much
@@ -30,9 +28,6 @@
 	- This can be another knob to turn as we increase difficulty over time
 - We need to introduce a new smart bomb type, which avoids friendly missiles on it's way to the target
 - We need to introduce a bomber type, which is destructible itself, but also launches missiles as it travels horizontally through the screen.
-- Save and track scores
-	- Should the players score be saved when quitting early? I.e. by pressing the x on the window?
-		- No. It shouldn't.
 		
 ## Non-Critical
 - Every certain number of points, if a player has lost a city, a random city will reappear in it's position
